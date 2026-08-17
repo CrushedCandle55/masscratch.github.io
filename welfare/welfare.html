@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="zh-HK" data-theme="light" data-size="md">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>會員福利及優惠 Welfare & Offers - Masscratch 星商相昇</title>
+    <style>
+        /* --- Apple Aesthetic Design System --- */
+        :root {
+            --bg-color: #000000;
+            --card-bg: rgba(22, 22, 23, 0.8);
+            --text-main: #f5f5f7;
+            --text-sub: #86868b;
+            --accent: #2997ff;
+            --nav-bg: rgba(22, 22, 23, 0.8);
+            --border: rgba(255, 255, 255, 0.1);
+            --font-main: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --card-gap: 1.5rem;
+            --overlay-bg: rgba(0, 0, 0, 0.4);
+
+            --portal-back-bg: rgba(28, 28, 30, 0.95);
+            --portal-back-border: rgba(255, 255, 255, 0.15);
+            --close-btn-bg: rgba(255, 255, 255, 0.1);
+            --close-btn-hover: rgba(255, 255, 255, 0.2);
+            --close-btn-text: #ffffff;
+
+            --cookie-bg: rgba(28, 28, 30, 0.9);
+            --cookie-border: rgba(255, 255, 255, 0.15);
+            --badge-bg: rgba(41, 151, 255, 0.15);
+        }
+
+        [data-theme="light"] {
+            --bg-color: #f5f5f7;
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --text-main: #1d1d1f;
+            --text-sub: #6e6e73;
+            --accent: #0071e3;
+            --nav-bg: rgba(245, 245, 247, 0.8);
+            --border: rgba(0, 0, 0, 0.1);
+            --overlay-bg: rgba(255, 255, 255, 0.4);
+
+            --portal-back-bg: rgba(255, 255, 255, 0.95);
+            --portal-back-border: rgba(0, 0, 0, 0.1);
+            --close-btn-bg: rgba(0, 0, 0, 0.05);
+            --close-btn-hover: rgba(0, 0, 0, 0.1);
+            --close-btn-text: #1d1d1f;
+
+            --cookie-bg: rgba(255, 255, 255, 0.95);
+            --cookie-border: rgba(0, 0, 0, 0.1);
+            --badge-bg: rgba(0, 113, 227, 0.1);
+        }
+
+        html[data-size="sm"] { font-size: 14px; }
+        html[data-size="md"] { font-size: 16px; }
+        html[data-size="lg"] { font-size: 18px; }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-size: 1rem;
+            transition: background-color 0.5s ease, color 0.5s ease;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 48px;
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1.5rem;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .back-nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .back-nav-btn:hover {
+            opacity: 0.8;
+        }
+
+        .logo {
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .nav-link-btn {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 4px 10px;
+            border-radius: 12px;
+            background: var(--badge-bg);
+            transition: background-color 0.2s;
+        }
+
+        .settings-btn {
+            background: none;
+            border: none;
+            color: var(--text-main);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+        }
+
+        /* --- Hero / Header Banner --- */
+        .page-header {
+            padding-top: 100px;
+            padding-bottom: 2rem;
+            text-align: center;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        .page-title {
+            font-size: calc(1.8rem + 2.5vw);
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+
+        .page-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-sub);
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* --- Content Container & Grid --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 1.2rem 4rem;
+        }
+
+        /* Category Filter Tabs */
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: rgba(128, 128, 128, 0.12);
+            border: 1px solid transparent;
+            color: var(--text-main);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .tab-btn.active {
+            background: var(--accent);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 113, 227, 0.25);
+        }
+
+        .welfare-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* --- Welfare Card --- */
+        .welfare-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .welfare-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .shop-icon {
+            font-size: 2.2rem;
+            background: var(--badge-bg);
+            width: 54px;
+            height: 54px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .category-tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--accent);
+            background: var(--badge-bg);
+            padding: 4px 10px;
+            border-radius: 10px;
+        }
+
+        .shop-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+
+        .offer-highlight {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .offer-desc {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-footer {
+            border-top: 1px solid var(--border);
+            padding-top: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--text-sub);
+        }
+
+        .location-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* --- Settings Panel --- */
+        .settings-panel {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 290px;
+            height: 100%;
+            background: var(--card-bg);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-left: 1px solid var(--border);
+            box-shadow: -10px 0 30px rgba(0,0,0,0.15);
+            z-index: 150;
+            transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 5rem 1.5rem 1.5rem;
+        }
+
+        .settings-panel.is-open { right: 0; }
+        .setting-group { margin-bottom: 2rem; }
+        .setting-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-sub);
+            text-transform: uppercase;
+            margin-bottom: 0.6rem;
+        }
+
+        .btn-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+            gap: 0.4rem;
+        }
+
+        .setting-btn-opt {
+            background: rgba(128,128,128,0.12);
+            border: 1px solid transparent;
+            color: var(--text-main);
+            padding: 0.55rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .setting-btn-opt.active {
+            background: var(--accent);
+            color: #ffffff;
+        }
+
+        /* Footer Info Notice */
+        .notice-box {
+            margin-top: 3rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            line-height: 1.6;
+        }
+
+        @media (min-width: 768px) {
+            header { padding: 0 2rem; }
+            .settings-panel { width: 320px; right: -350px; padding: 6rem 2rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-group">
+            <a href="index.html" class="back-nav-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                <span id="btnBack">主頁</span>
+            </a>
+            <div class="logo">Masscratch</div>
+        </div>
+        <div class="nav-actions">
+            <a href="index.html" class="nav-link-btn" id="navHomeLink">幹事陣容</a>
+            <button class="settings-btn" id="toggleSettings" aria-label="Settings">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Settings Panel -->
+    <div class="settings-panel" id="settingsPanel">
+        <div class="setting-group">
+            <div class="setting-title" id="lblTheme">外觀設計</div>
+            <div class="btn-group">
+                <button class="setting-btn-opt" data-opt="theme" data-value="dark" id="btnDark">深色</button>
+                <button class="setting-btn-opt" data-opt="theme" data-value="light" id="btnLight">淺色</button>
+            </div>
+        </div>
+        <div class="setting-group">
+            <div class="setting-title" id="lblLang">語言切換</div>
+            <div class="btn-group" style="grid-template-columns: 1fr;">
+                <button class="setting-btn-opt" data-opt="lang" data-value="zh" id="btnZh">繁體中文 (香港)</button>
+                <button class="setting-btn-opt" data-opt="lang" data-value="en-us" id="btnEn">English (US)</button>
+            </div>
+        </div>
+        <div class="setting-group">
+            <div class="setting-title" id="lblTextSize">字體大小</div>
+            <div class="btn-group">
+                <button class="setting-btn-opt" data-opt="size" data-value="sm" id="btnSizeSm">A-</button>
+                <button class="setting-btn-opt" data-opt="size" data-value="md" id="btnSizeMd">A</button>
+                <button class="setting-btn-opt" data-opt="size" data-value="lg" id="btnSizeLg">A+</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Banner -->
+    <section class="page-header">
+        <h1 class="page-title" id="txtPageTitle">優惠及福利<br><span style="font-weight: 300; font-size: 0.8em; color: var(--text-sub);">Welfare Offer</span></h1>
+        <p class="page-subtitle" id="txtPageSubtitle">Masscratch 為元朗商會中學全體同學精心籌備的特約商戶專屬優惠！憑學生證即可享用以下福利。</p>
+    </section>
+
+    <!-- Content Section -->
+    <main class="container">
+        <!-- Category Filter -->
+        <div class="filter-tabs">
+            <button class="tab-btn active" data-cat="all" id="tabAll">全部福利 All</button>
+            <button class="tab-btn" data-cat="food" id="tabFood">餐飲美食 Food</button>
+            <button class="tab-btn" data-cat="study" id="tabStudy">文具文教 Study</button>
+            <button class="tab-btn" data-cat="lifestyle" id="tabLife">生活娛樂 Lifestyle</button>
+        </div>
+
+        <!-- Welfare Cards Grid -->
+        <div class="welfare-grid" id="welfareGrid"></div>
+
+        <div class="notice-box" id="txtNotice">
+            💡 <strong>優惠使用須知：</strong><br>
+            所有優惠須於結帳前出示有效之元朗商會中學學生證。優惠受商戶條款及細則約束，如有任何爭議，Masscratch 及特約商戶保留最終決定權。
+        </div>
+    </main>
+
+    <script>
+        // --- i18n Data ---
+        const i18n = {
+            'zh': {
+                backBtn: "返回主頁",
+                navHome: "幹事陣容",
+                pageTitle: "優惠及福利 Welfare Offer",
+                pageSubtitle: "Masscratch 為元朗商會中學全體同學精心籌備的專屬優惠！出示學生證即可享用。",
+                tabAll: "全部福利",
+                tabFood: "餐飲美食",
+                tabStudy: "文具文教",
+                tabLife: "生活娛樂",
+                theme: "外觀設計", lang: "語言切換", textSize: "字體大小",
+                dark: "深色", light: "淺色",
+                notice: "💡 <strong>優惠使用須知：</strong><br>所有優惠須於結帳前出示有效之元朗商會中學學生證。優惠受商戶條款及細則約束，如有任何爭議，Masscratch 及特約商戶保留最終決定權。",
+                categories: {
+                    food: "餐飲美食",
+                    study: "文具文教",
+                    lifestyle: "生活娛樂"
+                },
+                items: [
+                    {
+                        icon: "🧋", cat: "food", shop: "星茶星願 StarTea",
+                        offer: "全單 85 折優惠", desc: "憑學生證購買任何手搖飲品均可享 85 折，免費加乙份波霸或仙草！",
+                        location: "元朗教育路", valid: "全年有效"
+                    },
+                    {
+                        icon: "🍜", cat: "food", shop: "極味拉麵 GokuRamen",
+                        offer: "堂食即送溏心蛋或小食", desc: "凡點選任何主食拉麵，即免費獲贈溏心蛋一隻或小食乙份。",
+                        location: "元朗大馬路", valid: "全年有效"
+                    },
+                    {
+                        icon: "✏️", cat: "study", shop: "創藝文具專門店 ArtCraft",
+                        offer: "文具精品 9 折優惠", desc: "購買所有文具、補充練習及美術用品滿 $50 即可享 9 折優惠。",
+                        location: "元朗千色匯鄰近", valid: "全年有效"
+                    },
+                    {
+                        icon: "🍰", cat: "food", shop: "甜蜜時光 Bakery & Cafe",
+                        offer: "下午茶時段 8 折", desc: "每日下午 2:30 - 5:30 點選任何蛋糕套餐即享 8 折專屬優惠。",
+                        location: "元朗鳳攸南街", valid: "全年有效"
+                    },
+                    {
+                        icon: "🎮", cat: "lifestyle", shop: "星光電競影音 StarTech",
+                        offer: "電腦配件 95 折及免費包膜", desc: "購買任何耳機、滑鼠或周邊配件即享 95 折，兼送手機螢幕貼。",
+                        location: "元朗廣場", valid: "全年有效"
+                    },
+                    {
+                        icon: "👓", cat: "lifestyle", shop: "清晰視界 Optical Express",
+                        offer: "配鏡框減 $100 & 隱形眼鏡優惠", desc: "指定鏡框及鏡片組合即減 $100，買隱形眼鏡滿兩盒再加送護理液。",
+                        location: "元朗青山公路", valid: "全年有效"
+                    }
+                ]
+            },
+            'en-us': {
+                backBtn: "Back",
+                navHome: "Team",
+                pageTitle: "Welfare & Offers",
+                pageSubtitle: "Exclusive merchant discounts arranged by Masscratch for all YLMASS students! Simply present your student ID.",
+                tabAll: "All Offers",
+                tabFood: "Food & Drinks",
+                tabStudy: "Stationery & Books",
+                tabLife: "Lifestyle",
+                theme: "Appearance", lang: "Language", textSize: "Text Size",
+                dark: "Dark", light: "Light",
+                notice: "💡 <strong>Terms & Conditions:</strong><br>All offers require presentation of a valid YLMASS Student ID before checkout. Subject to merchant terms. Masscratch reserves the final right of decision.",
+                categories: {
+                    food: "Food & Drinks",
+                    study: "Stationery",
+                    lifestyle: "Lifestyle"
+                },
+                items: [
+                    {
+                        icon: "🧋", cat: "food", shop: "StarTea",
+                        offer: "15% Off Total Bill", desc: "Enjoy 15% off any handcrafted drink with free topping (Boba/Grass Jelly) upon showing student ID.",
+                        location: "Educational Road, Yuen Long", valid: "All Year Round"
+                    },
+                    {
+                        icon: "🍜", cat: "food", shop: "Goku Ramen",
+                        offer: "Free Soft-Boiled Egg / Snack", desc: "Get a free soft-boiled egg or side snack with any ramen main dish order.",
+                        location: "Castle Peak Road, Yuen Long", valid: "All Year Round"
+                    },
+                    {
+                        icon: "✏️", cat: "study", shop: "ArtCraft Stationery",
+                        offer: "10% Off Stationery Items", desc: "Get 10% off on all stationery, exercises, and art supplies with purchases over $50.",
+                        location: "Near Kolour Yuen Long", valid: "All Year Round"
+                    },
+                    {
+                        icon: "🍰", cat: "food", shop: "Sweet Time Cafe",
+                        offer: "20% Off Teatime Sets", desc: "Enjoy 20% off cake sets every day during tea hours (2:30 PM - 5:30 PM).",
+                        location: "Fung Yau Street South", valid: "All Year Round"
+                    },
+                    {
+                        icon: "🎮", cat: "lifestyle", shop: "StarTech Gaming",
+                        offer: "5% Off Accessories & Free Screen Guard", desc: "5% off headsets, mice, and tech accessories + free screen film application.",
+                        location: "Yuen Long Plaza", valid: "All Year Round"
+                    },
+                    {
+                        icon: "👓", cat: "lifestyle", shop: "Optical Express",
+                        offer: "$100 Off Glasses Frame & Lens", desc: "$100 discount on selected frame and lens packages + free solution with 2 boxes of contact lenses.",
+                        location: "Castle Peak Road", valid: "All Year Round"
+                    }
+                ]
+            }
+        };
+
+        // --- Core Cookie Utilities ---
+        function getCookie(name) {
+            return document.cookie.split('; ').reduce((r, v) => {
+                const parts = v.split('=');
+                return parts[0] === name ? decodeURIComponent(parts[1]) : r;
+            }, '');
+        }
+
+        function setCookie(name, value, days = 365) {
+            const expires = new Date(Date.now() + days * 864e5).toUTCString();
+            document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/; SameSite=Strict`;
+        }
+
+        let isCookieAllowed = getCookie('cookieConsent') === 'allowed';
+        let currentLang = isCookieAllowed ? (getCookie('prefLang') || 'zh') : 'zh';
+        let currentFilter = 'all';
+
+        let savedTheme = isCookieAllowed ? (getCookie('prefTheme') || 'light') : 'light';
+        let savedSize = isCookieAllowed ? (getCookie('prefSize') || 'md') : 'md';
+
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        document.documentElement.setAttribute('data-size', savedSize);
+
+        // --- Render Cards ---
+        function renderWelfareGrid() {
+            const grid = document.getElementById('welfareGrid');
+            grid.innerHTML = '';
+            const items = i18n[currentLang].items;
+
+            const filteredItems = currentFilter === 'all' 
+                ? items 
+                : items.filter(item => item.cat === currentFilter);
+
+            filteredItems.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'welfare-card';
+                card.innerHTML = `
+                    <div>
+                        <div class="card-header-row">
+                            <div class="shop-icon">${item.icon}</div>
+                            <span class="category-tag">${i18n[currentLang].categories[item.cat]}</span>
+                        </div>
+                        <h3 class="shop-name">${item.shop}</h3>
+                        <div class="offer-highlight">🏷️ ${item.offer}</div>
+                        <p class="offer-desc">${item.desc}</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="location-badge">📍 ${item.location}</span>
+                        <span>⏳ ${item.valid}</span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // --- Filter Tabs Event ---
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentFilter = this.dataset.cat;
+                renderWelfareGrid();
+            });
+        });
+
+        // --- Settings Drawer ---
+        const toggleSettings = document.getElementById('toggleSettings');
+        const settingsPanel = document.getElementById('settingsPanel');
+        toggleSettings.addEventListener('click', e => { e.stopPropagation(); settingsPanel.classList.toggle('is-open'); });
+        
+        document.addEventListener('click', e => { 
+            if (!settingsPanel.contains(e.target) && !toggleSettings.contains(e.target)) {
+                settingsPanel.classList.remove('is-open'); 
+            }
+        });
+
+        document.querySelectorAll('.setting-btn-opt').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const optType = this.dataset.opt;
+                const val = this.dataset.value;
+
+                this.parentElement.querySelectorAll('.setting-btn-opt').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                if (optType === 'theme') {
+                    document.documentElement.setAttribute('data-theme', val);
+                    if (isCookieAllowed) setCookie('prefTheme', val);
+                } else if (optType === 'size') {
+                    document.documentElement.setAttribute('data-size', val);
+                    if (isCookieAllowed) setCookie('prefSize', val);
+                } else if (optType === 'lang') {
+                    currentLang = val;
+                    if (isCookieAllowed) setCookie('prefLang', val);
+                    updateLanguage();
+                }
+            });
+        });
+
+        function syncActiveButtons() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const currentSize = document.documentElement.getAttribute('data-size');
+            
+            document.querySelectorAll('[data-opt="theme"]').forEach(b => b.classList.toggle('active', b.dataset.value === currentTheme));
+            document.querySelectorAll('[data-opt="size"]').forEach(b => b.classList.toggle('active', b.dataset.value === currentSize));
+            document.querySelectorAll('[data-opt="lang"]').forEach(b => b.classList.toggle('active', b.dataset.value === currentLang));
+        }
+
+        function updateLanguage() {
+            const data = i18n[currentLang];
+            document.getElementById('btnBack').innerText = data.backBtn;
+            document.getElementById('navHomeLink').innerText = data.navHome;
+            document.getElementById('txtPageTitle').innerHTML = data.pageTitle;
+            document.getElementById('txtPageSubtitle').innerText = data.pageSubtitle;
+            document.getElementById('tabAll').innerText = data.tabAll;
+            document.getElementById('tabFood').innerText = data.tabFood;
+            document.getElementById('tabStudy').innerText = data.tabStudy;
+            document.getElementById('tabLife').innerText = data.tabLife;
+            document.getElementById('lblTheme').innerText = data.theme;
+            document.getElementById('lblLang').innerText = data.lang;
+            document.getElementById('lblTextSize').innerText = data.textSize;
+            document.getElementById('btnDark').innerText = data.dark;
+            document.getElementById('btnLight').innerText = data.light;
+            document.getElementById('txtNotice').innerHTML = data.notice;
+            renderWelfareGrid();
+            syncActiveButtons();
+        }
+
+        updateLanguage();
+    </script>
+</body>
+</html>
