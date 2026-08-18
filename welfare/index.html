@@ -16,7 +16,7 @@
             --border: rgba(255, 255, 255, 0.1);
             --font-main: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
             --card-gap: 1.5rem;
-            --overlay-bg: rgba(0, 0, 0, 0.4);
+            --overlay-bg: rgba(0, 0, 0, 0.6);
 
             --portal-back-bg: rgba(28, 28, 30, 0.95);
             --portal-back-border: rgba(255, 255, 255, 0.15);
@@ -37,7 +37,7 @@
             --accent: #0071e3;
             --nav-bg: rgba(245, 245, 247, 0.8);
             --border: rgba(0, 0, 0, 0.1);
-            --overlay-bg: rgba(255, 255, 255, 0.4);
+            --overlay-bg: rgba(255, 255, 255, 0.6);
 
             --portal-back-bg: rgba(255, 255, 255, 0.95);
             --portal-back-border: rgba(0, 0, 0, 0.1);
@@ -71,6 +71,118 @@
             transition: background-color 0.5s ease, color 0.5s ease;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- 彈窗與背景模糊樣式 --- */
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        body.modal-open header,
+        body.modal-open main,
+        body.modal-open section,
+        body.modal-open .settings-panel {
+            filter: blur(10px);
+            pointer-events: none;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: var(--overlay-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+
+        .modal-box {
+            background: var(--portal-back-bg);
+            border: 1px solid var(--portal-back-border);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 420px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            color: var(--text-main);
+        }
+
+        .modal-title {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 0.7rem 1.2rem;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            transition: all 0.2s ease;
+        }
+
+        .modal-btn-cancel {
+            background: var(--close-btn-bg);
+            color: var(--close-btn-text);
+        }
+
+        .modal-btn-cancel:hover {
+            background: var(--close-btn-hover);
+        }
+
+        .modal-btn-confirm {
+            background: var(--accent);
+            color: #ffffff;
+            border: none;
+        }
+
+        .modal-btn-confirm:hover {
+            opacity: 0.9;
+        }
+
+        .pwd-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: rgba(128, 128, 128, 0.1);
+            color: var(--text-main);
+            font-size: 1rem;
+            outline: none;
+            margin-bottom: 1.2rem;
+            text-align: center;
+        }
+
+        .pwd-input:focus {
+            border-color: var(--accent);
+        }
+
+        .error-msg {
+            color: #ff453a;
+            font-size: 0.85rem;
+            margin-top: -0.5rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .hidden {
+            display: none !important;
         }
 
         /* --- Header & Navigation --- */
@@ -367,7 +479,33 @@
         }
     </style>
 </head>
-<body>
+<body class="modal-open">
+
+    <!-- 測試提示與密碼驗證彈窗 -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal-box">
+            
+            <!-- 第一階段：提醒訊息 -->
+            <div id="stepNotice">
+                <p class="modal-title">所有優惠內容皆為虛構，網站測試中<br><span style="color: var(--text-sub); font-size: 0.9em;">All the content is fake, the website is testing</span></p>
+                <div class="modal-actions">
+                    <button id="btnCancel" class="modal-btn modal-btn-cancel">取消</button>
+                    <button id="btnConfirm" class="modal-btn modal-btn-confirm">確認</button>
+                </div>
+            </div>
+
+            <!-- 第二階段：密碼輸入 -->
+            <div id="stepPassword" class="hidden">
+                <p class="modal-title">請輸入測試存取密碼</p>
+                <input type="password" id="pwdInput" class="pwd-input" placeholder="密碼">
+                <p id="errorMsg" class="error-msg">密碼錯誤，請重新輸入！</p>
+                <div class="modal-actions">
+                    <button id="btnSubmitPwd" class="modal-btn modal-btn-confirm">驗證並進入</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <header>
         <div class="logo-group">
@@ -437,6 +575,45 @@
     </main>
 
     <script>
+        // --- 彈窗與密碼監測邏輯 ---
+        const REDIRECT_URL = "https://masscratch.top";
+        const CORRECT_PASSWORD = "masscratch2627";
+
+        const modalOverlay = document.getElementById("modalOverlay");
+        const stepNotice = document.getElementById("stepNotice");
+        const stepPassword = document.getElementById("stepPassword");
+        const pwdInput = document.getElementById("pwdInput");
+        const errorMsg = document.getElementById("errorMsg");
+
+        document.getElementById("btnCancel").addEventListener("click", () => {
+            window.location.href = REDIRECT_URL;
+        });
+
+        document.getElementById("btnConfirm").addEventListener("click", () => {
+            stepNotice.classList.add("hidden");
+            stepPassword.classList.remove("hidden");
+            pwdInput.focus();
+        });
+
+        function verifyPassword() {
+            if (pwdInput.value === CORRECT_PASSWORD) {
+                modalOverlay.classList.add("hidden");
+                document.body.classList.remove("modal-open");
+            } else {
+                errorMsg.style.display = "block";
+                pwdInput.value = "";
+                pwdInput.focus();
+            }
+        }
+
+        document.getElementById("btnSubmitPwd").addEventListener("click", verifyPassword);
+
+        pwdInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                verifyPassword();
+            }
+        });
+
         // --- i18n Data ---
         const i18n = {
             'zh': {
