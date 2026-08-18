@@ -352,17 +352,15 @@
             transform: scale(1) translateY(0);
         }
 
+        /* 改為圓形照片樣式 */
         .back-avatar {
             width: 96px;
             height: 96px;
             border-radius: 50%;
-            background: var(--avatar-bg-start);
+            object-fit: cover;
             border: 3px solid var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
             margin-bottom: 1rem;
+            display: block;
         }
 
         .back-name {
@@ -501,7 +499,6 @@
             bottom: 24px;
         }
 
-        /* Fixed absolute sizes prevent text scaling layout breakages */
         .cookie-text {
             font-size: 14px !important;
             line-height: 1.45 !important;
@@ -568,7 +565,6 @@
             .portal-close:hover { background: var(--close-btn-hover); opacity: 1 !important; }
             .settings-panel { width: 320px; right: -350px; padding: 6rem 2rem 2rem; }
             
-            /* Enforce horizontal alignment layout on larger screens */
             .cookie-banner {
                 flex-direction: row !important;
                 align-items: center;
@@ -584,7 +580,6 @@
     <header>
     <div class="logo">Masscratch 星商相昇</div>
     <div class="nav-actions">
-        <!-- 優惠及福利按鈕（黑白風格 + 資料夾路徑） -->
         <a href="welfare/" class="nav-link-btn" style="color: #000000; text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 5px 12px; border-radius: 12px; background: rgba(0, 0, 0, 0.05); border: 1px solid rgba(0, 0, 0, 0.15); transition: all 0.2s ease;">
             優惠及福利 Welfare Offer
         </a>
@@ -645,7 +640,8 @@
             <div class="portal-face portal-back">
                 <button class="portal-close" id="closePortal" aria-label="Close">✕</button>
                 <div class="back-container">
-                    <div class="back-avatar" id="backAvatar">✨</div>
+                    <!-- 使用 img 標籤展示幹事照片 -->
+                    <img class="back-avatar" id="backAvatar" src="" alt="Avatar">
                     <h3 class="back-name" id="backName">姓名</h3>
                     <div class="back-role" id="backRole">職位</div>
                     <p class="back-bio" id="backBio">個人簡介載入中...</p>
@@ -792,7 +788,12 @@
             const portalFront = document.getElementById('portalFrontContent');
             
             portalFront.innerHTML = originCard.innerHTML;
-            document.getElementById('backAvatar').innerText = memberData.emoji;
+            
+            // 動態設為圖片 URL 指向 www.masscratch.top/[name].jpg
+            const avatarImg = document.getElementById('backAvatar');
+            avatarImg.src = `https://www.masscratch.top/${encodeURIComponent(memberData.key)}.jpg`;[cite: 1]
+            avatarImg.alt = i18n[currentLang].names[memberData.key];
+
             document.getElementById('backName').innerText = i18n[currentLang].names[memberData.key];
             document.getElementById('backRole').innerText = i18n[currentLang].roles[memberData.role];
             document.getElementById('backBio').innerText = i18n[currentLang].bio;
