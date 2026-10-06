@@ -143,6 +143,7 @@
         }
 
         .school-name {
+            font-family: var(--font-main);
             font-size: 0.95rem;
             font-weight: 500;
             color: var(--text-sub);
@@ -152,20 +153,23 @@
         }
 
         .cabinet-title {
-            font-size: clamp(1.5rem, 1.2rem + 5vw, 3.8rem);
-            font-weight: 700;
+            font-family: var(--font-main);
+            font-size: clamp(1.35rem, 0.7rem + 6.5vw, 3.8rem);
+            font-weight: 800;
             letter-spacing: -1px;
             color: var(--text-main);
             margin-bottom: 1.2rem;
-            line-height: 1.2;
+            line-height: 1.15;
             width: 100%;
             max-width: 100%;
             padding: 0 0.25rem;
-            word-break: keep-all;
-            overflow-wrap: break-word;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .hero-desc {
+            font-family: var(--font-main);
             font-size: clamp(0.95rem, 0.85rem + 1.2vw, 1.5rem);
             color: var(--text-sub);
             max-width: 92%;
@@ -569,6 +573,9 @@
             }
             .cabinet-title {
                 margin-bottom: 1rem;
+                font-weight: 800;
+                font-size: clamp(1.3rem, 0.55rem + 7.2vw, 2.2rem);
+                letter-spacing: -0.8px;
             }
             .hero-desc {
                 margin-bottom: 1.8rem;
