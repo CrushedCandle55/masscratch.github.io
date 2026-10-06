@@ -684,10 +684,16 @@
 
         /* --- Site Footer --- */
         .site-footer {
+            position: relative;
+            z-index: 1;
             border-top: 1px solid var(--border);
-            padding: 2.5rem 1.25rem 2rem;
-            margin-top: 1rem;
+            padding: 2.75rem 1.25rem calc(2.5rem + env(safe-area-inset-bottom));
+            margin-top: 2rem;
+            margin-bottom: 0;
             text-align: center;
+            background: var(--bg-color);
+            /* Extra space so cookie banner never covers the footer */
+            padding-bottom: calc(6rem + env(safe-area-inset-bottom));
         }
 
         .footer-inner {
