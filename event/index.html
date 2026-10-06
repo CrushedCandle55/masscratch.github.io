@@ -1,0 +1,336 @@
+
+<!DOCTYPE html>
+<html lang="zh-HK" data-theme="light" data-size="md">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>預計活動 - Masscratch 星商相昇</title>
+    <style>
+        :root {
+            --bg-color: #000000;
+            --card-bg: rgba(22, 22, 23, 0.8);
+            --text-main: #f5f5f7;
+            --text-sub: #86868b;
+            --accent: #2997ff;
+            --nav-bg: rgba(22, 22, 23, 0.8);
+            --border: rgba(255, 255, 255, 0.1);
+            --font-main: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --hero-ig-bg: rgba(255, 255, 255, 0.06);
+            --hero-ig-text: #f5f5f7;
+            --hero-ig-border: rgba(255, 255, 255, 0.15);
+            --tag-bg: rgba(41, 151, 255, 0.15);
+        }
+        [data-theme="light"] {
+            --bg-color: #f5f5f7;
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --text-main: #1d1d1f;
+            --text-sub: #6e6e73;
+            --accent: #0071e3;
+            --nav-bg: rgba(245, 245, 247, 0.8);
+            --border: rgba(0, 0, 0, 0.1);
+            --hero-ig-bg: #1d1d1f;
+            --hero-ig-text: #ffffff;
+            --hero-ig-border: transparent;
+            --tag-bg: rgba(0, 113, 227, 0.12);
+        }
+        html[data-size="sm"] { font-size: 14px; }
+        html[data-size="md"] { font-size: 16px; }
+        html[data-size="lg"] { font-size: 18px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent; }
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-size: 1rem;
+            transition: background-color 0.35s ease, color 0.35s ease;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
+            min-height: 100vh;
+        }
+        header {
+            position: fixed; top: 0; width: 100%;
+            height: calc(48px + env(safe-area-inset-top));
+            padding-top: env(safe-area-inset-top);
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            z-index: 100; border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+            padding-left: 1.5rem; padding-right: 1.5rem;
+        }
+        .logo {
+            font-family: var(--font-main); font-weight: 800; font-size: 1rem;
+            letter-spacing: -0.5px; color: var(--text-main); text-decoration: none;
+        }
+        .nav-actions { display: flex; gap: 0.75rem; align-items: center; }
+        .nav-back-btn {
+            display: inline-flex; align-items: center; gap: 0.35rem;
+            background: none; border: none; color: var(--accent);
+            font-size: 0.9rem; font-weight: 500; cursor: pointer;
+            text-decoration: none; padding: 4px 8px; border-radius: 8px;
+            transition: background-color 0.2s;
+        }
+        .nav-back-btn:active { background-color: rgba(128,128,128,0.12); }
+        .settings-btn {
+            background: none; border: none; color: var(--text-main);
+            cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 4px;
+        }
+        .settings-panel {
+            position: fixed; top: 0; right: 0; width: 290px; height: 100%;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-left: 1px solid var(--border);
+            box-shadow: -10px 0 30px rgba(0,0,0,0.15); z-index: 150;
+            transform: translate3d(100%, 0, 0);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 5rem 1.5rem 1.5rem; will-change: transform; contain: layout style;
+        }
+        .settings-panel.is-open { transform: translate3d(0, 0, 0); }
+        .setting-group { margin-bottom: 2rem; }
+        .setting-title { font-size: 0.85rem; font-weight: 600; color: var(--text-sub); text-transform: uppercase; margin-bottom: 0.6rem; }
+        .btn-group { display: grid; grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); gap: 0.4rem; }
+        .setting-btn-opt {
+            background: rgba(128,128,128,0.12); border: 1px solid transparent;
+            color: var(--text-main); padding: 0.55rem; border-radius: 10px;
+            cursor: pointer; font-size: 0.8rem; font-weight: 500;
+        }
+        .setting-btn-opt.active { background: var(--accent); color: #ffffff; }
+        .page-hero {
+            padding: calc(48px + env(safe-area-inset-top) + 2.5rem) 1.25rem 1.5rem;
+            text-align: center; max-width: 1100px; margin: 0 auto;
+        }
+        .page-title {
+            font-family: var(--font-main);
+            font-size: clamp(1.6rem, 1.2rem + 2.5vw, 2.4rem);
+            font-weight: 800; letter-spacing: -0.5px; margin-bottom: 0.6rem; line-height: 1.2;
+        }
+        .page-subtitle { font-size: 1rem; color: var(--text-sub); line-height: 1.5; max-width: 90%; margin: 0 auto; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0.5rem 1rem 4rem; }
+        .section-label {
+            font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.8px; color: var(--accent); margin: 1.75rem 0 0.75rem 0.25rem;
+        }
+        .event-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 0.9rem; }
+        .event-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border); border-radius: 16px;
+            padding: 1.25rem 1.3rem;
+            transition: border-color 0.25s, background-color 0.25s;
+        }
+        .event-card:active { background-color: rgba(128,128,128,0.08); }
+        .event-top {
+            display: flex; align-items: flex-start; justify-content: space-between;
+            gap: 0.75rem; margin-bottom: 0.5rem;
+        }
+        .event-name {
+            font-size: 1.1rem; font-weight: 700; color: var(--text-main); line-height: 1.3;
+        }
+        .event-tag {
+            flex-shrink: 0;
+            font-size: 0.7rem; font-weight: 600;
+            color: var(--accent); background: var(--tag-bg);
+            padding: 0.25rem 0.55rem; border-radius: 8px;
+            text-transform: uppercase; letter-spacing: 0.3px;
+            white-space: nowrap;
+        }
+        .event-meta {
+            display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem;
+            font-size: 0.85rem; color: var(--text-sub); margin-bottom: 0.55rem;
+        }
+        .event-meta span { display: inline-flex; align-items: center; gap: 0.3rem; }
+        .event-desc {
+            font-size: 0.9rem; color: var(--text-sub); line-height: 1.5;
+        }
+        .footer-note { text-align: center; font-size: 0.8rem; color: var(--text-sub); margin-top: 2rem; padding: 0 1rem; line-height: 1.5; }
+        @media (min-width: 768px) {
+            header { padding-left: 2rem; padding-right: 2rem; }
+            .settings-panel { width: 320px; padding: 6rem 2rem 2rem; }
+            .page-hero { padding-top: calc(48px + 3.5rem); }
+            .event-card:hover { border-color: var(--accent); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+            .container { padding: 1rem 1.5rem 5rem; }
+        }
+        @media (max-width: 480px) {
+            header { padding-left: 1rem; padding-right: 1rem; }
+            .logo { font-size: 0.9rem; }
+            .page-hero { padding: calc(48px + env(safe-area-inset-top) + 1.75rem) 1rem 1.25rem; }
+            .event-card { padding: 1.1rem 1.15rem; border-radius: 14px; }
+            .event-name { font-size: 1.05rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">Masscratch 星商相昇</a>
+        <div class="nav-actions">
+            <a href="index.html" class="nav-back-btn" id="btnBack">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                <span id="txtBack">主頁</span>
+            </a>
+            <button class="settings-btn" id="toggleSettings" aria-label="Settings">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <div class="settings-panel" id="settingsPanel">
+        <div class="setting-group">
+            <div class="setting-title" id="lblTheme">外觀設計</div>
+            <div class="btn-group">
+                <button class="setting-btn-opt" data-opt="theme" data-value="dark" id="btnDark">深色</button>
+                <button class="setting-btn-opt" data-opt="theme" data-value="light" id="btnLight">淺色</button>
+            </div>
+        </div>
+        <div class="setting-group">
+            <div class="setting-title" id="lblLang">語言切換</div>
+            <div class="btn-group" style="grid-template-columns: 1fr;">
+                <button class="setting-btn-opt" data-opt="lang" data-value="zh" id="btnZh">繁體中文 (香港)</button>
+                <button class="setting-btn-opt" data-opt="lang" data-value="en-us" id="btnEn">English (US)</button>
+            </div>
+        </div>
+        <div class="setting-group">
+            <div class="setting-title" id="lblTextSize">字體大小</div>
+            <div class="btn-group">
+                <button class="setting-btn-opt" data-opt="size" data-value="sm" id="btnSizeSm">A-</button>
+                <button class="setting-btn-opt" data-opt="size" data-value="md" id="btnSizeMd">A</button>
+                <button class="setting-btn-opt" data-opt="size" data-value="lg" id="btnSizeLg">A+</button>
+            </div>
+        </div>
+    </div>
+
+    <section class="page-hero">
+        <h1 class="page-title" id="txtPageTitle">預計活動</h1>
+        <p class="page-subtitle" id="txtPageSub">Masscratch 計劃舉辦的校園活動一覽</p>
+    </section>
+
+    <div class="container">
+        <div class="section-label" id="lblUpcoming">即將推出</div>
+        <div class="event-list" id="listUpcoming"></div>
+
+        <p class="footer-note" id="txtFooter">活動詳情會隨籌備進度更新 · 歡迎向內閣提出意見</p>
+    </div>
+
+    <script>
+        const i18n = {
+            zh: {
+                back: "主頁", pageTitle: "預計活動", pageSub: "Masscratch 計劃舉辦的校園活動一覽",
+                upcoming: "即將推出", empty: "活動詳情稍後公佈，敬請期待。",
+                footer: "活動詳情會隨籌備進度更新 · 歡迎向內閣提出意見",
+                theme: "外觀設計", lang: "語言切換", textSize: "字體大小", dark: "深色", light: "淺色"
+            },
+            'en-us': {
+                back: "Home", pageTitle: "Planned Events", pageSub: "Upcoming activities planned by Masscratch",
+                upcoming: "Coming Soon", empty: "Event details will be announced soon. Stay tuned.",
+                footer: "Details will be updated as we prepare · Feel free to share your ideas with the cabinet",
+                theme: "Appearance", lang: "Language", textSize: "Text Size", dark: "Dark", light: "Light"
+            }
+        };
+
+        const eventsData = {
+            upcoming: []
+        };
+
+        function setCookie(name, value, days) {
+            days = days || 365;
+            var expires = new Date(Date.now() + days * 864e5).toUTCString();
+            document.cookie = name + "=" + encodeURIComponent(value) + "; expires=" + expires + "; path=/; SameSite=Strict";
+        }
+        function getCookie(name) {
+            return document.cookie.split("; ").reduce(function(r, v) {
+                var parts = v.split("=");
+                return parts[0] === name ? decodeURIComponent(parts[1]) : r;
+            }, "");
+        }
+
+        var isCookieAllowed = getCookie("cookieConsent") === "allowed";
+        var currentLang = isCookieAllowed ? (getCookie("prefLang") || "zh") : "zh";
+        var savedTheme = isCookieAllowed ? (getCookie("prefTheme") || "light") : "light";
+        var savedSize = isCookieAllowed ? (getCookie("prefSize") || "md") : "md";
+        document.documentElement.setAttribute("data-theme", savedTheme);
+        document.documentElement.setAttribute("data-size", savedSize);
+
+        function renderEvents(containerId, items) {
+            var el = document.getElementById(containerId);
+            el.innerHTML = "";
+            var k = currentLang === "zh" ? "zh" : "en";
+            if (!items || items.length === 0) {
+                var empty = document.createElement("div");
+                empty.className = "event-card";
+                empty.style.textAlign = "center";
+                empty.style.padding = "2rem 1.25rem";
+                empty.innerHTML = '<div class="event-desc" style="margin:0">' + (i18n[currentLang].empty || "") + '</div>';
+                el.appendChild(empty);
+                return;
+            }
+            items.forEach(function(item) {
+                var card = document.createElement("div");
+                card.className = "event-card";
+                card.innerHTML =
+                    '<div class="event-top">' +
+                        '<div class="event-name">' + (item.name[k] || item.name.zh) + '</div>' +
+                        '<span class="event-tag">' + (item.tag[k] || item.tag.zh) + '</span>' +
+                    '</div>' +
+                    '<div class="event-meta">' +
+                        '<span>📅 ' + (item.date[k] || item.date.zh) + '</span>' +
+                        '<span>📍 ' + (item.place[k] || item.place.zh) + '</span>' +
+                    '</div>' +
+                    '<div class="event-desc">' + (item.desc[k] || item.desc.zh) + '</div>';
+                el.appendChild(card);
+            });
+        }
+
+        function updateLanguage() {
+            var d = i18n[currentLang];
+            document.getElementById("txtBack").innerText = d.back;
+            document.getElementById("txtPageTitle").innerText = d.pageTitle;
+            document.getElementById("txtPageSub").innerText = d.pageSub;
+            document.getElementById("lblUpcoming").innerText = d.upcoming;
+            document.getElementById("txtFooter").innerText = d.footer;
+            document.getElementById("lblTheme").innerText = d.theme;
+            document.getElementById("lblLang").innerText = d.lang;
+            document.getElementById("lblTextSize").innerText = d.textSize;
+            document.getElementById("btnDark").innerText = d.dark;
+            document.getElementById("btnLight").innerText = d.light;
+            renderEvents("listUpcoming", eventsData.upcoming);
+            syncActiveButtons();
+        }
+
+        function syncActiveButtons() {
+            var theme = document.documentElement.getAttribute("data-theme");
+            var size = document.documentElement.getAttribute("data-size");
+            document.querySelectorAll('[data-opt="theme"]').forEach(function(b) { b.classList.toggle("active", b.dataset.value === theme); });
+            document.querySelectorAll('[data-opt="size"]').forEach(function(b) { b.classList.toggle("active", b.dataset.value === size); });
+            document.querySelectorAll('[data-opt="lang"]').forEach(function(b) { b.classList.toggle("active", b.dataset.value === currentLang); });
+        }
+
+        var toggleSettings = document.getElementById("toggleSettings");
+        var settingsPanel = document.getElementById("settingsPanel");
+        toggleSettings.addEventListener("click", function(e) { e.stopPropagation(); settingsPanel.classList.toggle("is-open"); });
+        document.addEventListener("click", function(e) {
+            if (!settingsPanel.contains(e.target) && !toggleSettings.contains(e.target)) settingsPanel.classList.remove("is-open");
+        });
+
+        document.querySelectorAll(".setting-btn-opt").forEach(function(btn) {
+            btn.addEventListener("click", function() {
+                var optType = this.dataset.opt, val = this.dataset.value;
+                this.parentElement.querySelectorAll(".setting-btn-opt").forEach(function(b) { b.classList.remove("active"); });
+                this.classList.add("active");
+                if (optType === "theme") {
+                    document.documentElement.setAttribute("data-theme", val);
+                    if (isCookieAllowed) setCookie("prefTheme", val);
+                } else if (optType === "size") {
+                    document.documentElement.setAttribute("data-size", val);
+                    if (isCookieAllowed) setCookie("prefSize", val);
+                } else if (optType === "lang") {
+                    currentLang = val;
+                    if (isCookieAllowed) setCookie("prefLang", val);
+                    updateLanguage();
+                }
+            });
+        });
+
+        updateLanguage();
+    </script>
+</body>
+</html>
