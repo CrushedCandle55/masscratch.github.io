@@ -682,6 +682,68 @@
             color: var(--text-sub);
         }
 
+        /* --- Site Footer --- */
+        .site-footer {
+            border-top: 1px solid var(--border);
+            padding: 2.5rem 1.25rem 2rem;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .footer-inner {
+            max-width: 720px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.65rem;
+        }
+
+        .footer-brand {
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: -0.3px;
+            color: var(--text-main);
+        }
+
+        .footer-line {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            line-height: 1.5;
+        }
+
+        .footer-line a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .footer-line a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-copy {
+            font-size: 0.75rem;
+            color: var(--text-sub);
+            opacity: 0.85;
+            margin-top: 0.4rem;
+        }
+
+        .footer-credit {
+            font-size: 0.75rem;
+            color: var(--text-sub);
+            margin-top: 0.15rem;
+        }
+
+        .footer-credit a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-credit a:hover {
+            color: var(--accent);
+        }
+
         /* --- Responsive Media Queries --- */
         @media (max-width: 480px) {
             .hero {
@@ -951,6 +1013,24 @@
         </div>
     </div>
 
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">Masscratch 星商相昇</div>
+            <div class="footer-line" id="txtFooterAddr">元朗豐年路20號 · 20 Fung Nin Road, Yuen Long, NT</div>
+            <div class="footer-line"><a href="mailto:enquiry@masscratch.top">enquiry@masscratch.top</a></div>
+            <div class="footer-copy" id="txtFooterCopy">© 2026 Masscratch · Yuen Long Merchants Association Secondary School</div>
+            <div class="footer-credit">
+                Designed &amp; built by <a href="https://pigcc.wtf" target="_blank" rel="noopener noreferrer">Callan Yip</a>
+                · <a href="https://instagram.com/pigcc_1030" target="_blank" rel="noopener noreferrer">@pigcc_1030</a>
+            </div>
+            <div class="footer-credit">
+                Assistant by <a href="https://casperong.xyz" target="_blank" rel="noopener noreferrer">Casper Ong</a>
+                · <a href="https://instagram.com/casperong" target="_blank" rel="noopener noreferrer">@casperong</a>
+            </div>
+        </div>
+    </footer>
+
     <!-- Cookie Consent Banner -->
     <div class="cookie-banner" id="cookieBanner">
         <div class="cookie-text" id="txtCookiePrompt">
@@ -1070,8 +1150,8 @@
             { role: 'president', key: 'Xu Chak Long', emoji: '🌟', ig: 'kenken1226_' },
             { role: 'vice_president', key: 'Ng Hoi Laam', emoji: '⚡', ig: 'ng_sakura724' },
             { role: 'vice_president', key: 'Ku Ho Yin', emoji: '☄️', ig: 'khy_vincent0822' },
-            { role: 'general_affairs', key: 'Yip Tsz Leong', emoji: '🛠️', ig: 'pigcc_1030' },
             { role: 'general_affairs', key: 'Chan Yu Hin', emoji: '⚙️', ig: 'cyh' },
+            { role: 'general_affairs', key: 'Yip Tsz Leong', emoji: '🛠️', ig: 'pigcc_1030' },
             { role: 'designer', key: 'Lam Queenie', emoji: '🎨', ig: 'lq' },
             { role: 'designer', key: 'Yik Ho Sing', emoji: '🖌️', ig: 'yhs' },
             { role: 'publication', key: 'Chan Wai Ki', emoji: '📢', ig: 'cwk' },
