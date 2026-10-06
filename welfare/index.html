@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>會員福利及優惠 Welfare & Offers - Masscratch 星商相昇</title>
+    <title>學生福利 - Masscratch 星商相昇</title>
     <style>
-        /* --- Apple Aesthetic Design System --- */
         :root {
             --bg-color: #000000;
             --card-bg: rgba(22, 22, 23, 0.8);
@@ -15,20 +14,10 @@
             --nav-bg: rgba(22, 22, 23, 0.8);
             --border: rgba(255, 255, 255, 0.1);
             --font-main: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
-            --card-gap: 1.5rem;
-            --overlay-bg: rgba(0, 0, 0, 0.6);
-
-            --portal-back-bg: rgba(28, 28, 30, 0.95);
-            --portal-back-border: rgba(255, 255, 255, 0.15);
-            --close-btn-bg: rgba(255, 255, 255, 0.1);
-            --close-btn-hover: rgba(255, 255, 255, 0.2);
-            --close-btn-text: #ffffff;
-
-            --cookie-bg: rgba(28, 28, 30, 0.9);
-            --cookie-border: rgba(255, 255, 255, 0.15);
-            --badge-bg: rgba(41, 151, 255, 0.15);
+            --hero-ig-bg: rgba(255, 255, 255, 0.06);
+            --hero-ig-text: #f5f5f7;
+            --hero-ig-border: rgba(255, 255, 255, 0.15);
         }
-
         [data-theme="light"] {
             --bg-color: #f5f5f7;
             --card-bg: rgba(255, 255, 255, 0.8);
@@ -37,493 +26,132 @@
             --accent: #0071e3;
             --nav-bg: rgba(245, 245, 247, 0.8);
             --border: rgba(0, 0, 0, 0.1);
-            --overlay-bg: rgba(255, 255, 255, 0.6);
-
-            --portal-back-bg: rgba(255, 255, 255, 0.95);
-            --portal-back-border: rgba(0, 0, 0, 0.1);
-            --close-btn-bg: rgba(0, 0, 0, 0.05);
-            --close-btn-hover: rgba(0, 0, 0, 0.1);
-            --close-btn-text: #1d1d1f;
-
-            --cookie-bg: rgba(255, 255, 255, 0.95);
-            --cookie-border: rgba(0, 0, 0, 0.1);
-            --badge-bg: rgba(0, 113, 227, 0.1);
+            --hero-ig-bg: #1d1d1f;
+            --hero-ig-text: #ffffff;
+            --hero-ig-border: transparent;
         }
-
         html[data-size="sm"] { font-size: 14px; }
         html[data-size="md"] { font-size: 16px; }
         html[data-size="lg"] { font-size: 18px; }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            user-select: none;
-            -webkit-user-select: none;
-            -webkit-tap-highlight-color: transparent;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent; }
         body {
             font-family: var(--font-main);
             background-color: var(--bg-color);
             color: var(--text-main);
             font-size: 1rem;
-            transition: background-color 0.5s ease, color 0.5s ease;
+            transition: background-color 0.35s ease, color 0.35s ease;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
+            min-height: 100vh;
         }
-
-        /* --- 彈窗與背景模糊樣式 --- */
-        body.modal-open {
-            overflow: hidden;
-        }
-
-        body.modal-open header,
-        body.modal-open main,
-        body.modal-open section,
-        body.modal-open .settings-panel {
-            filter: blur(10px);
-            pointer-events: none;
-        }
-
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: var(--overlay-bg);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-        }
-
-        .modal-box {
-            background: var(--portal-back-bg);
-            border: 1px solid var(--portal-back-border);
-            border-radius: 20px;
-            padding: 2rem;
-            max-width: 420px;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            color: var(--text-main);
-        }
-
-        .modal-title {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            font-weight: 500;
-        }
-
-        .modal-actions {
-            display: flex;
-            gap: 0.8rem;
-            justify-content: center;
-        }
-
-        .modal-btn {
-            flex: 1;
-            padding: 0.7rem 1.2rem;
-            border-radius: 12px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            border: 1px solid var(--border);
-            transition: all 0.2s ease;
-        }
-
-        .modal-btn-cancel {
-            background: var(--close-btn-bg);
-            color: var(--close-btn-text);
-        }
-
-        .modal-btn-cancel:hover {
-            background: var(--close-btn-hover);
-        }
-
-        .modal-btn-confirm {
-            background: var(--accent);
-            color: #ffffff;
-            border: none;
-        }
-
-        .modal-btn-confirm:hover {
-            opacity: 0.9;
-        }
-
-        .pwd-input {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            background: rgba(128, 128, 128, 0.1);
-            color: var(--text-main);
-            font-size: 1rem;
-            outline: none;
-            margin-bottom: 1.2rem;
-            text-align: center;
-        }
-
-        .pwd-input:focus {
-            border-color: var(--accent);
-        }
-
-        .error-msg {
-            color: #ff453a;
-            font-size: 0.85rem;
-            margin-top: -0.5rem;
-            margin-bottom: 1rem;
-            display: none;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        /* --- Header & Navigation --- */
         header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: 48px;
+            position: fixed; top: 0; width: 100%;
+            height: calc(48px + env(safe-area-inset-top));
+            padding-top: env(safe-area-inset-top);
             background: var(--nav-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 100;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 1.5rem;
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            z-index: 100; border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+            padding-left: 1.5rem; padding-right: 1.5rem;
         }
-
-        .logo-group {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .back-nav-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: opacity 0.2s;
-        }
-
-        .back-nav-btn:hover {
-            opacity: 0.8;
-        }
-
         .logo {
-            font-weight: 600;
-            font-size: 1rem;
-            letter-spacing: -0.5px;
+            font-family: var(--font-main); font-weight: 800; font-size: 1rem;
+            letter-spacing: -0.5px; color: var(--text-main); text-decoration: none;
         }
-
-        .nav-actions {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .nav-link-btn {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            padding: 4px 10px;
-            border-radius: 12px;
-            background: var(--badge-bg);
+        .nav-actions { display: flex; gap: 0.75rem; align-items: center; }
+        .nav-back-btn {
+            display: inline-flex; align-items: center; gap: 0.35rem;
+            background: none; border: none; color: var(--accent);
+            font-size: 0.9rem; font-weight: 500; cursor: pointer;
+            text-decoration: none; padding: 4px 8px; border-radius: 8px;
             transition: background-color 0.2s;
         }
-
+        .nav-back-btn:active { background-color: rgba(128,128,128,0.12); }
         .settings-btn {
-            background: none;
-            border: none;
-            color: var(--text-main);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 4px;
+            background: none; border: none; color: var(--text-main);
+            cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 4px;
         }
-
-        /* --- Hero / Header Banner --- */
-        .page-header {
-            padding-top: 100px;
-            padding-bottom: 2rem;
-            text-align: center;
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
+        .settings-panel {
+            position: fixed; top: 0; right: 0; width: 290px; height: 100%;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-left: 1px solid var(--border);
+            box-shadow: -10px 0 30px rgba(0,0,0,0.15); z-index: 150;
+            transform: translate3d(100%, 0, 0);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 5rem 1.5rem 1.5rem; will-change: transform; contain: layout style;
         }
-
+        .settings-panel.is-open { transform: translate3d(0, 0, 0); }
+        .setting-group { margin-bottom: 2rem; }
+        .setting-title { font-size: 0.85rem; font-weight: 600; color: var(--text-sub); text-transform: uppercase; margin-bottom: 0.6rem; }
+        .btn-group { display: grid; grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); gap: 0.4rem; }
+        .setting-btn-opt {
+            background: rgba(128,128,128,0.12); border: 1px solid transparent;
+            color: var(--text-main); padding: 0.55rem; border-radius: 10px;
+            cursor: pointer; font-size: 0.8rem; font-weight: 500;
+        }
+        .setting-btn-opt.active { background: var(--accent); color: #ffffff; }
+        .page-hero {
+            padding: calc(48px + env(safe-area-inset-top) + 2.5rem) 1.25rem 1.5rem;
+            text-align: center; max-width: 1100px; margin: 0 auto;
+        }
         .page-title {
-            font-size: calc(1.8rem + 2.5vw);
-            font-weight: 700;
-            letter-spacing: -1px;
-            margin-bottom: 0.8rem;
-            line-height: 1.2;
+            font-family: var(--font-main);
+            font-size: clamp(1.6rem, 1.2rem + 2.5vw, 2.4rem);
+            font-weight: 800; letter-spacing: -0.5px; margin-bottom: 0.6rem; line-height: 1.2;
         }
-
-        .page-subtitle {
-            font-size: 1.15rem;
-            color: var(--text-sub);
-            max-width: 650px;
-            margin: 0 auto;
-            line-height: 1.5;
+        .page-subtitle { font-size: 1rem; color: var(--text-sub); line-height: 1.5; max-width: 90%; margin: 0 auto; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0.5rem 1rem 4rem; }
+        .section-label {
+            font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.8px; color: var(--accent); margin: 1.75rem 0 0.75rem 0.25rem;
         }
-
-        /* --- Content Container & Grid --- */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 1rem 1.2rem 4rem;
-        }
-
-        /* Category Filter Tabs */
-        .filter-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 0.6rem;
-            margin-bottom: 2.5rem;
-            flex-wrap: wrap;
-        }
-
-        .tab-btn {
-            background: rgba(128, 128, 128, 0.12);
-            border: 1px solid transparent;
-            color: var(--text-main);
-            padding: 0.6rem 1.2rem;
-            border-radius: 20px;
-            font-size: 0.88rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .tab-btn.active {
-            background: var(--accent);
-            color: #ffffff;
-            box-shadow: 0 4px 12px rgba(0, 113, 227, 0.25);
-        }
-
-        .welfare-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        /* --- Welfare Card --- */
+        .welfare-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 0.85rem; }
         .welfare-card {
             background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 1.8rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, box-shadow 0.3s;
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border); border-radius: 16px;
+            padding: 1.15rem 1.25rem; display: flex; flex-direction: column; gap: 0.35rem;
+            transition: border-color 0.25s, background-color 0.25s;
         }
-
-        .welfare-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        .card-header-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
-
-        .shop-icon {
-            font-size: 2.2rem;
-            background: var(--badge-bg);
-            width: 54px;
-            height: 54px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .category-tag {
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--accent);
-            background: var(--badge-bg);
-            padding: 4px 10px;
-            border-radius: 10px;
-        }
-
-        .shop-name {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.4rem;
-        }
-
-        .offer-highlight {
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: var(--accent);
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .offer-desc {
-            font-size: 0.9rem;
-            color: var(--text-sub);
-            line-height: 1.5;
-            margin-bottom: 1.5rem;
-        }
-
-        .card-footer {
-            border-top: 1px solid var(--border);
-            padding-top: 0.8rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.8rem;
-            color: var(--text-sub);
-        }
-
-        .location-badge {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        /* --- Settings Panel --- */
-        .settings-panel {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 290px;
-            height: 100%;
-            background: var(--card-bg);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border-left: 1px solid var(--border);
-            box-shadow: -10px 0 30px rgba(0,0,0,0.15);
-            z-index: 150;
-            transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            padding: 5rem 1.5rem 1.5rem;
-        }
-
-        .settings-panel.is-open { right: 0; }
-        .setting-group { margin-bottom: 2rem; }
-        .setting-title {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-sub);
-            text-transform: uppercase;
-            margin-bottom: 0.6rem;
-        }
-
-        .btn-group {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-            gap: 0.4rem;
-        }
-
-        .setting-btn-opt {
-            background: rgba(128,128,128,0.12);
-            border: 1px solid transparent;
-            color: var(--text-main);
-            padding: 0.55rem;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .setting-btn-opt.active {
-            background: var(--accent);
-            color: #ffffff;
-        }
-
-        /* Footer Info Notice */
-        .notice-box {
-            margin-top: 3rem;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 1.5rem;
-            text-align: center;
-            font-size: 0.85rem;
-            color: var(--text-sub);
-            line-height: 1.6;
-        }
-
+        .welfare-card:active { background-color: rgba(128,128,128,0.08); }
+        .welfare-name { font-size: 1.05rem; font-weight: 600; color: var(--text-main); line-height: 1.3; }
+        .welfare-handle { font-size: 0.8rem; color: var(--accent); font-weight: 500; }
+        .welfare-benefit { font-size: 0.9rem; color: var(--text-sub); line-height: 1.45; margin-top: 0.15rem; }
+        .welfare-benefit.empty { font-style: italic; opacity: 0.7; }
+        .footer-note { text-align: center; font-size: 0.8rem; color: var(--text-sub); margin-top: 2rem; padding: 0 1rem; line-height: 1.5; }
         @media (min-width: 768px) {
-            header { padding: 0 2rem; }
-            .settings-panel { width: 320px; right: -350px; padding: 6rem 2rem 2rem; }
+            header { padding-left: 2rem; padding-right: 2rem; }
+            .settings-panel { width: 320px; padding: 6rem 2rem 2rem; }
+            .page-hero { padding-top: calc(48px + 3.5rem); }
+            .welfare-card:hover { border-color: var(--accent); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+            .container { padding: 1rem 1.5rem 5rem; }
+        }
+        @media (max-width: 480px) {
+            header { padding-left: 1rem; padding-right: 1rem; }
+            .logo { font-size: 0.9rem; }
+            .page-hero { padding: calc(48px + env(safe-area-inset-top) + 1.75rem) 1rem 1.25rem; }
+            .welfare-card { padding: 1rem 1.1rem; border-radius: 14px; }
+            .welfare-name { font-size: 1rem; }
         }
     </style>
 </head>
-<body class="modal-open">
-
-    <!-- 測試提示與密碼驗證彈窗 -->
-    <div id="modalOverlay" class="modal-overlay">
-        <div class="modal-box">
-            
-            <!-- 第一階段：提醒訊息 -->
-            <div id="stepNotice">
-                <p class="modal-title">所有優惠內容皆為虛構，網站測試中<br><span style="color: var(--text-sub); font-size: 0.9em;">All the content is fake, the website is testing</span></p>
-                <div class="modal-actions">
-                    <button id="btnCancel" class="modal-btn modal-btn-cancel">取消</button>
-                    <button id="btnConfirm" class="modal-btn modal-btn-confirm">確認</button>
-                </div>
-            </div>
-
-            <!-- 第二階段：密碼輸入 -->
-            <div id="stepPassword" class="hidden">
-                <p class="modal-title">請輸入測試存取密碼</p>
-                <input type="password" id="pwdInput" class="pwd-input" placeholder="密碼">
-                <p id="errorMsg" class="error-msg">密碼錯誤，請重新輸入！</p>
-                <div class="modal-actions">
-                    <button id="btnSubmitPwd" class="modal-btn modal-btn-confirm">驗證並進入</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
+<body>
     <header>
-        <div class="logo-group">
-            <a href="index.html" class="back-nav-btn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-                <span id="btnBack">主頁</span>
-            </a>
-            <div class="logo">Masscratch</div>
-        </div>
+        <a href="index.html" class="logo">Masscratch 星商相昇</a>
         <div class="nav-actions">
-            <a href="index.html" class="nav-link-btn" id="navHomeLink">幹事陣容</a>
+            <a href="index.html" class="nav-back-btn" id="btnBack">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                <span id="txtBack">主頁</span>
+            </a>
             <button class="settings-btn" id="toggleSettings" aria-label="Settings">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
             </button>
         </div>
     </header>
 
-    <!-- Settings Panel -->
     <div class="settings-panel" id="settingsPanel">
         <div class="setting-group">
             <div class="setting-title" id="lblTheme">外觀設計</div>
@@ -549,301 +177,151 @@
         </div>
     </div>
 
-    <!-- Header Banner -->
-    <section class="page-header">
-        <h1 class="page-title" id="txtPageTitle">優惠及福利<br><span style="font-weight: 300; font-size: 0.8em; color: var(--text-sub);">Welfare Offer</span></h1>
-        <p class="page-subtitle" id="txtPageSubtitle">Masscratch 為元朗商會中學全體同學精心籌備的特約商戶專屬優惠！憑學生證即可享用以下福利。</p>
+    <section class="page-hero">
+        <h1 class="page-title" id="txtPageTitle">學生福利</h1>
+        <p class="page-subtitle" id="txtPageSub">Masscratch 為你爭取的專屬優惠與福利</p>
     </section>
 
-    <!-- Content Section -->
-    <main class="container">
-        <!-- Category Filter -->
-        <div class="filter-tabs">
-            <button class="tab-btn active" data-cat="all" id="tabAll">全部福利 All</button>
-            <button class="tab-btn" data-cat="food" id="tabFood">餐飲美食 Food</button>
-            <button class="tab-btn" data-cat="study" id="tabStudy">文具文教 Study</button>
-            <button class="tab-btn" data-cat="lifestyle" id="tabLife">生活娛樂 Lifestyle</button>
-        </div>
-
-        <!-- Welfare Cards Grid -->
-        <div class="welfare-grid" id="welfareGrid"></div>
-
-        <div class="notice-box" id="txtNotice">
-            💡 <strong>優惠使用須知：</strong><br>
-            所有優惠須於結帳前出示有效之元朗商會中學學生證。優惠受商戶條款及細則約束，如有任何爭議，Masscratch 及特約商戶保留最終決定權。
-        </div>
-    </main>
+    <div class="container">
+        <div class="section-label" id="lblOrg">組織福利</div>
+        <div class="welfare-list" id="listOrg"></div>
+        <div class="section-label" id="lblMerchants">商戶優惠</div>
+        <div class="welfare-list" id="listMerchants"></div>
+        <p class="footer-note" id="txtFooter">優惠詳情以商戶最新公佈為準 · 出示學生證或按指示使用</p>
+    </div>
 
     <script>
-        // --- 彈窗與密碼監測邏輯 ---
-        const REDIRECT_URL = "https://masscratch.top";
-        const CORRECT_PASSWORD = "masscratch2627";
-
-        const modalOverlay = document.getElementById("modalOverlay");
-        const stepNotice = document.getElementById("stepNotice");
-        const stepPassword = document.getElementById("stepPassword");
-        const pwdInput = document.getElementById("pwdInput");
-        const errorMsg = document.getElementById("errorMsg");
-
-        document.getElementById("btnCancel").addEventListener("click", () => {
-            window.location.href = REDIRECT_URL;
-        });
-
-        document.getElementById("btnConfirm").addEventListener("click", () => {
-            stepNotice.classList.add("hidden");
-            stepPassword.classList.remove("hidden");
-            pwdInput.focus();
-        });
-
-        function verifyPassword() {
-            if (pwdInput.value === CORRECT_PASSWORD) {
-                modalOverlay.classList.add("hidden");
-                document.body.classList.remove("modal-open");
-            } else {
-                errorMsg.style.display = "block";
-                pwdInput.value = "";
-                pwdInput.focus();
-            }
-        }
-
-        document.getElementById("btnSubmitPwd").addEventListener("click", verifyPassword);
-
-        pwdInput.addEventListener("keypress", (e) => {
-            if (e.key === "Enter") {
-                verifyPassword();
-            }
-        });
-
-        // --- i18n Data ---
         const i18n = {
-            'zh': {
-                backBtn: "返回主頁",
-                navHome: "幹事陣容",
-                pageTitle: "優惠及福利 Welfare Offer",
-                pageSubtitle: "Masscratch 為元朗商會中學全體同學精心籌備的專屬優惠！出示學生證即可享用。",
-                tabAll: "全部福利",
-                tabFood: "餐飲美食",
-                tabStudy: "文具文教",
-                tabLife: "生活娛樂",
-                theme: "外觀設計", lang: "語言切換", textSize: "字體大小",
-                dark: "深色", light: "淺色",
-                notice: "💡 <strong>優惠使用須知：</strong><br>所有優惠須於結帳前出示有效之元朗商會中學學生證。優惠受商戶條款及細則約束，如有任何爭議，Masscratch 及特約商戶保留最終決定權。",
-                categories: {
-                    food: "餐飲美食",
-                    study: "文具文教",
-                    lifestyle: "生活娛樂"
-                },
-                items: [
-                    {
-                        icon: "🧋", cat: "food", shop: "星茶星願 StarTea",
-                        offer: "全單 85 折優惠", desc: "憑學生證購買任何手搖飲品均可享 85 折，免費加乙份波霸或仙草！",
-                        location: "元朗教育路", valid: "全年有效"
-                    },
-                    {
-                        icon: "🍜", cat: "food", shop: "極味拉麵 GokuRamen",
-                        offer: "堂食即送溏心蛋或小食", desc: "凡點選任何主食拉麵，即免費獲贈溏心蛋一隻或小食乙份。",
-                        location: "元朗大馬路", valid: "全年有效"
-                    },
-                    {
-                        icon: "✏️", cat: "study", shop: "創藝文具專門店 ArtCraft",
-                        offer: "文具精品 9 折優惠", desc: "購買所有文具、補充練習及美術用品滿 $50 即可享 9 折優惠。",
-                        location: "元朗千色匯鄰近", valid: "全年有效"
-                    },
-                    {
-                        icon: "🍰", cat: "food", shop: "甜蜜時光 Bakery & Cafe",
-                        offer: "下午茶時段 8 折", desc: "每日下午 2:30 - 5:30 點選任何蛋糕套餐即享 8 折專屬優惠。",
-                        location: "元朗鳳攸南街", valid: "全年有效"
-                    },
-                    {
-                        icon: "🎮", cat: "lifestyle", shop: "星光電競影音 StarTech",
-                        offer: "電腦配件 95 折及免費包膜", desc: "購買任何耳機、滑鼠或周邊配件即享 95 折，兼送手機螢幕貼。",
-                        location: "元朗廣場", valid: "全年有效"
-                    },
-                    {
-                        icon: "👓", cat: "lifestyle", shop: "清晰視界 Optical Express",
-                        offer: "配鏡框減 $100 & 隱形眼鏡優惠", desc: "指定鏡框及鏡片組合即減 $100，買隱形眼鏡滿兩盒再加送護理液。",
-                        location: "元朗青山公路", valid: "全年有效"
-                    }
-                ]
+            zh: {
+                back: "主頁", pageTitle: "學生福利", pageSub: "Masscratch 為你爭取的專屬優惠與福利",
+                org: "組織福利", merchants: "商戶優惠",
+                footer: "優惠詳情以商戶最新公佈為準 · 出示學生證或按指示使用",
+                theme: "外觀設計", lang: "語言切換", textSize: "字體大小", dark: "深色", light: "淺色", noDetail: "詳情稍後公佈"
             },
             'en-us': {
-                backBtn: "Back",
-                navHome: "Team",
-                pageTitle: "Welfare & Offers",
-                pageSubtitle: "Exclusive merchant discounts arranged by Masscratch for all YLMASS students! Simply present your student ID.",
-                tabAll: "All Offers",
-                tabFood: "Food & Drinks",
-                tabStudy: "Stationery & Books",
-                tabLife: "Lifestyle",
-                theme: "Appearance", lang: "Language", textSize: "Text Size",
-                dark: "Dark", light: "Light",
-                notice: "💡 <strong>Terms & Conditions:</strong><br>All offers require presentation of a valid YLMASS Student ID before checkout. Subject to merchant terms. Masscratch reserves the final right of decision.",
-                categories: {
-                    food: "Food & Drinks",
-                    study: "Stationery",
-                    lifestyle: "Lifestyle"
-                },
-                items: [
-                    {
-                        icon: "🧋", cat: "food", shop: "StarTea",
-                        offer: "15% Off Total Bill", desc: "Enjoy 15% off any handcrafted drink with free topping (Boba/Grass Jelly) upon showing student ID.",
-                        location: "Educational Road, Yuen Long", valid: "All Year Round"
-                    },
-                    {
-                        icon: "🍜", cat: "food", shop: "Goku Ramen",
-                        offer: "Free Soft-Boiled Egg / Snack", desc: "Get a free soft-boiled egg or side snack with any ramen main dish order.",
-                        location: "Castle Peak Road, Yuen Long", valid: "All Year Round"
-                    },
-                    {
-                        icon: "✏️", cat: "study", shop: "ArtCraft Stationery",
-                        offer: "10% Off Stationery Items", desc: "Get 10% off on all stationery, exercises, and art supplies with purchases over $50.",
-                        location: "Near Kolour Yuen Long", valid: "All Year Round"
-                    },
-                    {
-                        icon: "🍰", cat: "food", shop: "Sweet Time Cafe",
-                        offer: "20% Off Teatime Sets", desc: "Enjoy 20% off cake sets every day during tea hours (2:30 PM - 5:30 PM).",
-                        location: "Fung Yau Street South", valid: "All Year Round"
-                    },
-                    {
-                        icon: "🎮", cat: "lifestyle", shop: "StarTech Gaming",
-                        offer: "5% Off Accessories & Free Screen Guard", desc: "5% off headsets, mice, and tech accessories + free screen film application.",
-                        location: "Yuen Long Plaza", valid: "All Year Round"
-                    },
-                    {
-                        icon: "👓", cat: "lifestyle", shop: "Optical Express",
-                        offer: "$100 Off Glasses Frame & Lens", desc: "$100 discount on selected frame and lens packages + free solution with 2 boxes of contact lenses.",
-                        location: "Castle Peak Road", valid: "All Year Round"
-                    }
-                ]
+                back: "Home", pageTitle: "Student Welfare", pageSub: "Exclusive offers secured by Masscratch for you",
+                org: "Organisation Benefits", merchants: "Merchant Offers",
+                footer: "Offers subject to merchant terms · Present student card or follow instructions",
+                theme: "Appearance", lang: "Language", textSize: "Text Size", dark: "Dark", light: "Light", noDetail: "Details coming soon"
             }
         };
 
-        // --- Core Cookie Utilities ---
-        function getCookie(name) {
-            return document.cookie.split('; ').reduce((r, v) => {
-                const parts = v.split('=');
-                return parts[0] === name ? decodeURIComponent(parts[1]) : r;
-            }, '');
-        }
+        const welfareData = {
+            org: [
+                { name: { zh: "HKSSA", en: "HKSSA" }, handle: null,
+                  benefit: { zh: "按條件提交表格後，即可成為會員（即時生效）", en: "Become a member immediately after submitting the form (subject to conditions)" } }
+            ],
+            merchants: [
+                { name: { zh: "komorebi", en: "komorebi" }, handle: "@komorebi.storeee",
+                  benefit: { zh: "出示學生證 + Follow IG → 八折", en: "Student Card + Follow IG → 20% off" } },
+                { name: { zh: "FLOWERS S", en: "FLOWERS S" }, handle: "@your.favflowers",
+                  benefit: { zh: "出示學生證 → 九折", en: "Student Card → 10% off" } },
+                { name: { zh: "Holiday World", en: "Holiday World" }, handle: null,
+                  benefit: { zh: "特別優惠價", en: "Special Price" } },
+                { name: { zh: "輝旭文具", en: "輝旭文具" }, handle: null,
+                  benefit: { zh: "消費滿 $10 享九五折", en: "$10+ → 5% off" } },
+                { name: { zh: "元朗書店", en: "元朗書店" }, handle: null,
+                  benefit: { zh: "消費滿 $30 享九折", en: "$30+ → 10% off" } },
+                { name: { zh: "尋味", en: "尋味" }, handle: null,
+                  benefit: { zh: "四人或以上同行減 $5", en: "$5 off for groups of 4+" } },
+                { name: { zh: "凯豐海南雞", en: "凯豐海南雞" }, handle: null,
+                  benefit: { zh: "滿 $50 餐送雞翼", en: "$50 meal → free chicken wings" } },
+                { name: { zh: "糖森林", en: "糖森林" }, handle: null,
+                  benefit: { zh: "滿 $100 送腸粉", en: "$100+ → free rice noodle roll" } },
+                { name: { zh: "九八", en: "九八" }, handle: "@partyroom.98",
+                  benefit: { zh: "九五折", en: "5% off" } },
+                { name: { zh: "白田閱讀中心", en: "白田閱讀中心" }, handle: null,
+                  benefit: { zh: "", en: "" } },
+                { name: { zh: "香港古著", en: "香港古著" }, handle: null,
+                  benefit: { zh: "消費滿 $688 可入會，其後九折", en: "$688+ Membership, then 10% off" } }
+            ]
+        };
 
         function setCookie(name, value, days = 365) {
             const expires = new Date(Date.now() + days * 864e5).toUTCString();
-            document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/; SameSite=Strict`;
+            document.cookie = name + "=" + encodeURIComponent(value) + "; expires=" + expires + "; path=/; SameSite=Strict";
+        }
+        function getCookie(name) {
+            return document.cookie.split("; ").reduce(function(r, v) {
+                var parts = v.split("=");
+                return parts[0] === name ? decodeURIComponent(parts[1]) : r;
+            }, "");
         }
 
-        let isCookieAllowed = getCookie('cookieConsent') === 'allowed';
-        let currentLang = isCookieAllowed ? (getCookie('prefLang') || 'zh') : 'zh';
-        let currentFilter = 'all';
+        var isCookieAllowed = getCookie("cookieConsent") === "allowed";
+        var currentLang = isCookieAllowed ? (getCookie("prefLang") || "zh") : "zh";
+        var savedTheme = isCookieAllowed ? (getCookie("prefTheme") || "light") : "light";
+        var savedSize = isCookieAllowed ? (getCookie("prefSize") || "md") : "md";
+        document.documentElement.setAttribute("data-theme", savedTheme);
+        document.documentElement.setAttribute("data-size", savedSize);
 
-        let savedTheme = isCookieAllowed ? (getCookie('prefTheme') || 'light') : 'light';
-        let savedSize = isCookieAllowed ? (getCookie('prefSize') || 'md') : 'md';
-
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        document.documentElement.setAttribute('data-size', savedSize);
-
-        // --- Render Cards ---
-        function renderWelfareGrid() {
-            const grid = document.getElementById('welfareGrid');
-            grid.innerHTML = '';
-            const items = i18n[currentLang].items;
-
-            const filteredItems = currentFilter === 'all' 
-                ? items 
-                : items.filter(item => item.cat === currentFilter);
-
-            filteredItems.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'welfare-card';
-                card.innerHTML = `
-                    <div>
-                        <div class="card-header-row">
-                            <div class="shop-icon">${item.icon}</div>
-                            <span class="category-tag">${i18n[currentLang].categories[item.cat]}</span>
-                        </div>
-                        <h3 class="shop-name">${item.shop}</h3>
-                        <div class="offer-highlight">🏷️ ${item.offer}</div>
-                        <p class="offer-desc">${item.desc}</p>
-                    </div>
-                    <div class="card-footer">
-                        <span class="location-badge">📍 ${item.location}</span>
-                        <span>⏳ ${item.valid}</span>
-                    </div>
-                `;
-                grid.appendChild(card);
+        function renderList(containerId, items) {
+            var el = document.getElementById(containerId);
+            el.innerHTML = "";
+            var langKey = currentLang === "zh" ? "zh" : "en";
+            items.forEach(function(item) {
+                var card = document.createElement("div");
+                card.className = "welfare-card";
+                var benefitText = item.benefit[langKey] || item.benefit.zh;
+                var isEmpty = !benefitText.trim();
+                card.innerHTML = '<div class="welfare-name">' + (item.name[langKey] || item.name.zh) + '</div>' +
+                    (item.handle ? '<div class="welfare-handle">' + item.handle + '</div>' : '') +
+                    '<div class="welfare-benefit' + (isEmpty ? ' empty' : '') + '">' + (isEmpty ? i18n[currentLang].noDetail : benefitText) + '</div>';
+                el.appendChild(card);
             });
         }
 
-        // --- Filter Tabs Event ---
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                currentFilter = this.dataset.cat;
-                renderWelfareGrid();
-            });
+        function updateLanguage() {
+            var d = i18n[currentLang];
+            document.getElementById("txtBack").innerText = d.back;
+            document.getElementById("txtPageTitle").innerText = d.pageTitle;
+            document.getElementById("txtPageSub").innerText = d.pageSub;
+            document.getElementById("lblOrg").innerText = d.org;
+            document.getElementById("lblMerchants").innerText = d.merchants;
+            document.getElementById("txtFooter").innerText = d.footer;
+            document.getElementById("lblTheme").innerText = d.theme;
+            document.getElementById("lblLang").innerText = d.lang;
+            document.getElementById("lblTextSize").innerText = d.textSize;
+            document.getElementById("btnDark").innerText = d.dark;
+            document.getElementById("btnLight").innerText = d.light;
+            renderList("listOrg", welfareData.org);
+            renderList("listMerchants", welfareData.merchants);
+            syncActiveButtons();
+        }
+
+        function syncActiveButtons() {
+            var theme = document.documentElement.getAttribute("data-theme");
+            var size = document.documentElement.getAttribute("data-size");
+            document.querySelectorAll('[data-opt="theme"]').forEach(function(b) { b.classList.toggle("active", b.dataset.value === theme); });
+            document.querySelectorAll('[data-opt="size"]').forEach(function(b) { b.classList.toggle("active", b.dataset.value === size); });
+            document.querySelectorAll('[data-opt="lang"]').forEach(function(b) { b.classList.toggle("active", b.dataset.value === currentLang); });
+        }
+
+        var toggleSettings = document.getElementById("toggleSettings");
+        var settingsPanel = document.getElementById("settingsPanel");
+        toggleSettings.addEventListener("click", function(e) { e.stopPropagation(); settingsPanel.classList.toggle("is-open"); });
+        document.addEventListener("click", function(e) {
+            if (!settingsPanel.contains(e.target) && !toggleSettings.contains(e.target)) settingsPanel.classList.remove("is-open");
         });
 
-        // --- Settings Drawer ---
-        const toggleSettings = document.getElementById('toggleSettings');
-        const settingsPanel = document.getElementById('settingsPanel');
-        toggleSettings.addEventListener('click', e => { e.stopPropagation(); settingsPanel.classList.toggle('is-open'); });
-        
-        document.addEventListener('click', e => { 
-            if (!settingsPanel.contains(e.target) && !toggleSettings.contains(e.target)) {
-                settingsPanel.classList.remove('is-open'); 
-            }
-        });
-
-        document.querySelectorAll('.setting-btn-opt').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const optType = this.dataset.opt;
-                const val = this.dataset.value;
-
-                this.parentElement.querySelectorAll('.setting-btn-opt').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-
-                if (optType === 'theme') {
-                    document.documentElement.setAttribute('data-theme', val);
-                    if (isCookieAllowed) setCookie('prefTheme', val);
-                } else if (optType === 'size') {
-                    document.documentElement.setAttribute('data-size', val);
-                    if (isCookieAllowed) setCookie('prefSize', val);
-                } else if (optType === 'lang') {
+        document.querySelectorAll(".setting-btn-opt").forEach(function(btn) {
+            btn.addEventListener("click", function() {
+                var optType = this.dataset.opt, val = this.dataset.value;
+                this.parentElement.querySelectorAll(".setting-btn-opt").forEach(function(b) { b.classList.remove("active"); });
+                this.classList.add("active");
+                if (optType === "theme") {
+                    document.documentElement.setAttribute("data-theme", val);
+                    if (isCookieAllowed) setCookie("prefTheme", val);
+                } else if (optType === "size") {
+                    document.documentElement.setAttribute("data-size", val);
+                    if (isCookieAllowed) setCookie("prefSize", val);
+                } else if (optType === "lang") {
                     currentLang = val;
-                    if (isCookieAllowed) setCookie('prefLang', val);
+                    if (isCookieAllowed) setCookie("prefLang", val);
                     updateLanguage();
                 }
             });
         });
-
-        function syncActiveButtons() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const currentSize = document.documentElement.getAttribute('data-size');
-            
-            document.querySelectorAll('[data-opt="theme"]').forEach(b => b.classList.toggle('active', b.dataset.value === currentTheme));
-            document.querySelectorAll('[data-opt="size"]').forEach(b => b.classList.toggle('active', b.dataset.value === currentSize));
-            document.querySelectorAll('[data-opt="lang"]').forEach(b => b.classList.toggle('active', b.dataset.value === currentLang));
-        }
-
-        function updateLanguage() {
-            const data = i18n[currentLang];
-            document.getElementById('btnBack').innerText = data.backBtn;
-            document.getElementById('navHomeLink').innerText = data.navHome;
-            document.getElementById('txtPageTitle').innerHTML = data.pageTitle;
-            document.getElementById('txtPageSubtitle').innerText = data.pageSubtitle;
-            document.getElementById('tabAll').innerText = data.tabAll;
-            document.getElementById('tabFood').innerText = data.tabFood;
-            document.getElementById('tabStudy').innerText = data.tabStudy;
-            document.getElementById('tabLife').innerText = data.tabLife;
-            document.getElementById('lblTheme').innerText = data.theme;
-            document.getElementById('lblLang').innerText = data.lang;
-            document.getElementById('lblTextSize').innerText = data.textSize;
-            document.getElementById('btnDark').innerText = data.dark;
-            document.getElementById('btnLight').innerText = data.light;
-            document.getElementById('txtNotice').innerHTML = data.notice;
-            renderWelfareGrid();
-            syncActiveButtons();
-        }
 
         updateLanguage();
     </script>
