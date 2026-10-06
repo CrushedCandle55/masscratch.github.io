@@ -77,7 +77,7 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             font-size: 1rem;
-            transition: background-color 0.5s ease, color 0.5s ease;
+            transition: background-color 0.35s ease, color 0.35s ease;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             padding-left: env(safe-area-inset-left);
@@ -219,6 +219,52 @@
             margin-top: 0.25rem;
         }
 
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 1rem;
+            width: 100%;
+            max-width: 360px;
+            padding: 0 0.5rem;
+        }
+
+        .hero-action-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            flex: 1 1 0;
+            min-width: 0;
+            height: 46px;
+            border-radius: 23px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s, background-color 0.2s;
+        }
+
+        .hero-action-btn:active {
+            transform: scale(0.97);
+            opacity: 0.9;
+        }
+
+        .hero-welfare-btn {
+            background-color: var(--accent);
+            color: #ffffff;
+            border: none;
+        }
+
+        .hero-event-btn {
+            background-color: var(--hero-ig-bg);
+            color: var(--hero-ig-text);
+            border: 1px solid var(--hero-ig-border);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
         /* Threads – circular icon button */
         .hero-threads-btn {
             display: inline-flex;
@@ -335,6 +381,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: transform 0.2s ease, opacity 0.2s ease;
         }
 
         /* --- Fullscreen Card Portal --- */
@@ -342,16 +389,16 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
+            height: 100%;
             z-index: 1000;
             pointer-events: none;
             display: none;
-            perspective: 2000px;
-            background-color: rgba(0, 0, 0, 0);
-            backdrop-filter: blur(0px);
-            -webkit-backdrop-filter: blur(0px);
-            transition: background-color 0.5s ease, backdrop-filter 0.5s ease;
+            perspective: 1200px;
+            background-color: transparent;
+            /* Avoid animating backdrop-filter — apply instantly for better FPS */
+            transition: background-color 0.35s ease;
+            contain: strict;
         }
 
         .flip-overlay.is-active {
@@ -361,14 +408,22 @@
 
         .flip-overlay.is-blurred {
             background-color: var(--overlay-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
         }
 
         .portal-card {
             position: absolute;
             transform-style: preserve-3d;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            /* Only animate compositor-friendly properties */
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                        top 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                        left 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                        width 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                        height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, top, left, width, height;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
         }
 
         .portal-face {
@@ -378,7 +433,9 @@
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
             border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+            /* Promote to own layer */
+            transform: translateZ(0);
         }
 
         .portal-front {
@@ -412,15 +469,17 @@
             flex-direction: column;
             align-items: center;
             opacity: 0;
-            transform: scale(0.92) translateY(8px);
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+            transform: scale(0.94) translate3d(0, 10px, 0);
+            transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.12s,
+                        transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.12s;
             padding: 1rem 0;
             margin: auto 0;
+            will-change: opacity, transform;
         }
 
         .flip-overlay.is-flipped .back-container {
             opacity: 1;
-            transform: scale(1) translateY(0);
+            transform: scale(1) translate3d(0, 0, 0);
         }
 
         .back-avatar {
@@ -491,6 +550,7 @@
             justify-content: center;
             z-index: 1100;
             opacity: 0;
+            transition: opacity 0.25s ease, background-color 0.2s ease;
         }
         
         .flip-overlay.is-flipped .portal-close {
@@ -501,20 +561,23 @@
         .settings-panel {
             position: fixed;
             top: 0;
-            right: -100%;
+            right: 0;
             width: 290px;
             height: 100%;
             background: var(--card-bg);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-left: 1px solid var(--border);
             box-shadow: -10px 0 30px rgba(0,0,0,0.15);
             z-index: 150;
-            transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translate3d(100%, 0, 0);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             padding: 5rem 1.5rem 1.5rem;
+            will-change: transform;
+            contain: layout style;
         }
 
-        .settings-panel.is-open { right: 0; }
+        .settings-panel.is-open { transform: translate3d(0, 0, 0); }
         .setting-group { margin-bottom: 2rem; }
         .setting-title {
             font-size: 0.85rem;
@@ -549,15 +612,15 @@
         /* --- Scalable & Perfect Cookie Banner --- */
         .cookie-banner {
             position: fixed;
-            bottom: -300px;
+            bottom: max(24px, env(safe-area-inset-bottom));
             left: 50%;
-            transform: translateX(-50%);
+            transform: translate3d(-50%, 120%, 0);
             width: calc(100% - 32px);
             max-width: 860px; 
             background: var(--cookie-bg);
             border: 1px solid var(--cookie-border);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-radius: 20px;
             padding: 20px 24px;
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
@@ -565,11 +628,13 @@
             display: flex;
             flex-direction: column;
             gap: 16px;
-            transition: bottom 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform;
+            contain: layout style;
         }
 
         .cookie-banner.is-visible {
-            bottom: max(24px, env(safe-area-inset-bottom));
+            transform: translate3d(-50%, 0, 0);
         }
 
         /* Fixed absolute sizes prevent text scaling layout breakages */
@@ -650,6 +715,15 @@
             }
             .hero-socials {
                 gap: 0.6rem;
+            }
+            .hero-actions {
+                max-width: 320px;
+                gap: 0.6rem;
+                margin-top: 0.85rem;
+            }
+            .hero-action-btn {
+                height: 44px;
+                font-size: 0.8rem;
             }
             .container {
                 padding: 2rem 0.85rem 2.5rem;
@@ -755,8 +829,11 @@
             .hero-yt-btn:hover { transform: translateY(-2px) scale(1.05); background-color: rgba(255, 255, 255, 0.12); }
             [data-theme="light"] .hero-threads-btn:hover,
             [data-theme="light"] .hero-yt-btn:hover { background-color: #333336; opacity: 0.9; }
+            .hero-welfare-btn:hover { transform: translateY(-2px) scale(1.02); opacity: 0.92; }
+            .hero-event-btn:hover { transform: translateY(-2px) scale(1.02); background-color: rgba(255, 255, 255, 0.12); }
+            [data-theme="light"] .hero-event-btn:hover { background-color: #333336; opacity: 0.9; }
             .portal-close:hover { background: var(--close-btn-hover); opacity: 1 !important; }
-            .settings-panel { width: 320px; right: -350px; padding: 6rem 2rem 2rem; }
+            .settings-panel { width: 320px; padding: 6rem 2rem 2rem; }
             
             /* Enforce horizontal alignment layout on larger screens */
             .cookie-banner {
@@ -830,6 +907,22 @@
                 </svg>
             </a>
         </div>
+
+        <div class="hero-actions">
+            <a href="welfare.html" class="hero-action-btn hero-welfare-btn" id="btnHeroWelfare">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z"/>
+                </svg>
+                <span id="txtWelfareBtn">學生福利</span>
+            </a>
+            <a href="events.html" class="hero-action-btn hero-event-btn" id="btnHeroEvent">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                </svg>
+                <span id="txtEventBtn">預計活動</span>
+            </a>
+        </div>
     </section>
 
     <!-- Team Section -->
@@ -880,6 +973,8 @@
                 theme: "外觀設計", lang: "語言切換", textSize: "字體大小",
                 dark: "深色", light: "淺色",
                 heroIgText: "Masscratch 官方 IG",
+                welfareBtn: "學生福利",
+                eventBtn: "預計活動",
                 cookiePrompt: "本網站使用 Cookie 以提升你的個人化瀏覽體驗。<span>我們會記住你選擇的語言、外觀主題與字體大小。</span>",
                 cookieAccept: "同意並記住", cookieDecline: "拒絕",
                 roles: {
@@ -927,6 +1022,8 @@
                 theme: "Appearance", lang: "Language", textSize: "Text Size",
                 dark: "Dark", light: "Light",
                 heroIgText: "Masscratch Official IG",
+                welfareBtn: "Student Welfare",
+                eventBtn: "Planned Events",
                 cookiePrompt: "This website uses cookies to enhance your personalized browsing experience. <span>We remember your preference for theme, language, and font size.</span>",
                 cookieAccept: "Accept & Remember", cookieDecline: "Decline",
                 roles: {
@@ -1048,23 +1145,28 @@
             const targetHandle = memberData.ig || 'masscratch';
             document.getElementById('backIgLink').href = `https://instagram.com/${targetHandle}`;
 
+            const ease = '0.45s cubic-bezier(0.16, 1, 0.3, 1)';
             portalCard.style.transition = 'none';
-            portalCard.style.transform = 'none';
+            portalCard.style.transform = 'rotateY(0deg) translateZ(0)';
             portalCard.style.top = `${rect.top}px`;
             portalCard.style.left = `${rect.left}px`;
             portalCard.style.width = `${rect.width}px`;
             portalCard.style.height = `${rect.height}px`;
+            portalCard.style.willChange = 'transform, top, left, width, height';
             
             portal.style.display = 'block';
             portal.classList.remove('is-blurred', 'is-flipped');
             originCard.style.opacity = '0';
-            portal.offsetHeight;
+            // Force reflow so the next style changes animate
+            void portal.offsetHeight;
 
             portal.classList.add('is-active');
             document.body.classList.add('modal-open');
             
-            portalCard.style.transition = 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
-            portal.classList.add('is-blurred');
+            // Use compositor-friendly transition list (avoid "all")
+            portalCard.style.transition = `transform ${ease}, top ${ease}, left ${ease}, width ${ease}, height ${ease}`;
+            // Apply blur without transitioning it (cheaper)
+            requestAnimationFrame(() => portal.classList.add('is-blurred'));
 
             const isMobile = window.innerWidth < 768;
             const targetWidth = isMobile ? window.innerWidth * 0.92 : Math.min(window.innerWidth * 0.88, 480);
@@ -1074,9 +1176,9 @@
             portalCard.style.left = `${(window.innerWidth - targetWidth) / 2}px`;
             portalCard.style.width = `${targetWidth}px`;
             portalCard.style.height = `${targetHeight}px`;
-            portalCard.style.transform = 'rotateY(180deg)';
+            portalCard.style.transform = 'rotateY(180deg) translateZ(0)';
             
-            setTimeout(() => portal.classList.add('is-flipped'), 80);
+            setTimeout(() => portal.classList.add('is-flipped'), 70);
         }
 
         function closePortal() {
@@ -1086,19 +1188,21 @@
             const rect = activeOriginCard.getBoundingClientRect();
 
             portal.classList.remove('is-flipped', 'is-blurred');
+            portalCard.style.willChange = 'transform, top, left, width, height';
             portalCard.style.top = `${rect.top}px`;
             portalCard.style.left = `${rect.left}px`;
             portalCard.style.width = `${rect.width}px`;
             portalCard.style.height = `${rect.height}px`;
-            portalCard.style.transform = 'rotateY(0deg)';
+            portalCard.style.transform = 'rotateY(0deg) translateZ(0)';
 
             setTimeout(() => {
                 portal.classList.remove('is-active');
                 portal.style.display = 'none';
+                portalCard.style.willChange = 'auto';
                 activeOriginCard.style.opacity = '1';
                 activeOriginCard = null;
                 document.body.classList.remove('modal-open');
-            }, 500);
+            }, 450);
         }
 
         document.getElementById('closePortal').addEventListener('click', e => { e.stopPropagation(); closePortal(); });
@@ -1158,6 +1262,8 @@
             document.getElementById('btnDark').innerText = data.dark;
             document.getElementById('btnLight').innerText = data.light;
             document.getElementById('btnHeroIg').querySelector('span').innerText = data.heroIgText;
+            document.getElementById('txtWelfareBtn').innerText = data.welfareBtn;
+            document.getElementById('txtEventBtn').innerText = data.eventBtn;
             document.getElementById('txtCookiePrompt').innerHTML = data.cookiePrompt;
             document.getElementById('btnCookieAccept').innerText = data.cookieAccept;
             document.getElementById('btnCookieDecline').innerText = data.cookieDecline;
