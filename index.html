@@ -80,6 +80,8 @@
             transition: background-color 0.5s ease, color 0.5s ease;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
         }
 
         body.modal-open {
@@ -101,6 +103,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 1.5rem;
+            padding-top: env(safe-area-inset-top);
+            height: calc(48px + env(safe-area-inset-top));
         }
 
         .logo {
@@ -148,23 +152,26 @@
         }
 
         .cabinet-title {
-            font-size: calc(1.6rem + 4.5vw);
+            font-size: clamp(1.5rem, 1.2rem + 5vw, 3.8rem);
             font-weight: 700;
             letter-spacing: -1px;
             color: var(--text-main);
             margin-bottom: 1.2rem;
-            line-height: 1.15;
-            white-space: nowrap;
+            line-height: 1.2;
             width: 100%;
-            max-width: 100vw;
+            max-width: 100%;
+            padding: 0 0.25rem;
+            word-break: keep-all;
+            overflow-wrap: break-word;
         }
 
         .hero-desc {
-            font-size: 1.15rem;
+            font-size: clamp(0.95rem, 0.85rem + 1.2vw, 1.5rem);
             color: var(--text-sub);
-            max-width: 90%;
-            line-height: 1.45;
-            margin-bottom: 2.5rem;
+            max-width: 92%;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            padding: 0 0.5rem;
         }
 
         .hero-desc br {
@@ -202,22 +209,23 @@
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 3rem 1.2rem;
+            padding: 2.5rem 1rem 3rem;
         }
 
         .section-title {
-            font-size: 2rem;
+            font-size: clamp(1.4rem, 1.2rem + 2vw, 2rem);
             font-weight: 700;
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             letter-spacing: -0.5px;
+            padding: 0 0.5rem;
         }
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            column-gap: 1.5rem;
-            row-gap: var(--card-gap);
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
+            column-gap: 0.9rem;
+            row-gap: 1rem;
         }
 
         /* --- Standard Front Cards --- */
@@ -226,9 +234,10 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 1.8rem;
-            height: 160px;
+            border-radius: 16px;
+            padding: 1.25rem 1.1rem;
+            min-height: 130px;
+            height: auto;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -242,23 +251,25 @@
         }
 
         .role-badge {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: var(--accent);
             font-weight: 600;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.3rem;
         }
 
         .member-name {
-            font-size: 1.5rem;
+            font-size: clamp(1.05rem, 0.95rem + 1.5vw, 1.5rem);
             font-weight: 600;
+            line-height: 1.25;
+            padding-right: 1.2rem;
         }
 
         .card-arrow {
             position: absolute;
-            bottom: 1.2rem;
-            right: 1.2rem;
+            bottom: 0.9rem;
+            right: 0.9rem;
             color: var(--text-sub);
             opacity: 0.5;
             display: flex;
@@ -498,7 +509,7 @@
         }
 
         .cookie-banner.is-visible {
-            bottom: 24px;
+            bottom: max(24px, env(safe-area-inset-bottom));
         }
 
         /* Fixed absolute sizes prevent text scaling layout breakages */
@@ -547,6 +558,76 @@
         }
 
         /* --- Responsive Media Queries --- */
+        @media (max-width: 480px) {
+            .hero {
+                padding: 0 1rem;
+            }
+            .school-name {
+                font-size: 0.8rem;
+                letter-spacing: 1.5px;
+                margin-bottom: 0.6rem;
+            }
+            .cabinet-title {
+                margin-bottom: 1rem;
+            }
+            .hero-desc {
+                margin-bottom: 1.8rem;
+            }
+            .hero-ig-btn {
+                width: 100%;
+                max-width: 280px;
+                height: 44px;
+                font-size: 0.85rem;
+            }
+            .container {
+                padding: 2rem 0.85rem 2.5rem;
+            }
+            .team-grid {
+                grid-template-columns: repeat(auto-fit, minmax(min(100%, 145px), 1fr));
+                column-gap: 0.7rem;
+                row-gap: 0.85rem;
+            }
+            .card-static {
+                padding: 1.1rem 0.95rem;
+                min-height: 120px;
+                border-radius: 14px;
+            }
+            .role-badge {
+                font-size: 0.65rem;
+            }
+            .member-name {
+                font-size: 1.05rem;
+            }
+            .card-arrow {
+                bottom: 0.75rem;
+                right: 0.75rem;
+            }
+            .section-title {
+                margin-bottom: 1.25rem;
+            }
+            header {
+                padding: 0 1rem;
+            }
+            .logo {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (min-width: 481px) and (max-width: 767px) {
+            .team-grid {
+                grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+                column-gap: 1rem;
+                row-gap: 1.1rem;
+            }
+            .card-static {
+                min-height: 140px;
+                padding: 1.4rem 1.2rem;
+            }
+            .member-name {
+                font-size: 1.25rem;
+            }
+        }
+
         @media (min-width: 768px) {
             :root { --card-gap: 2.5rem; }
             .cabinet-title { 
@@ -554,11 +635,43 @@
                 letter-spacing: -2px; 
                 margin-bottom: 1.5rem;
                 white-space: nowrap;
+                padding: 0;
             }
             .hero-desc { 
                 font-size: 1.5rem; 
                 margin-bottom: 2.5rem; 
                 max-width: 900px;
+                padding: 0;
+            }
+            .container {
+                padding: 3rem 1.5rem;
+            }
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+            .team-grid {
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                column-gap: 1.5rem;
+                row-gap: var(--card-gap);
+            }
+            .card-static {
+                padding: 1.8rem;
+                height: 160px;
+                min-height: 160px;
+                border-radius: 18px;
+            }
+            .role-badge {
+                font-size: 0.8rem;
+                margin-bottom: 0.4rem;
+            }
+            .member-name {
+                font-size: 1.5rem;
+                padding-right: 0;
+            }
+            .card-arrow {
+                bottom: 1.2rem;
+                right: 1.2rem;
             }
             header { padding: 0 2rem; }
             .card-static:hover { border-color: var(--accent); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); }
@@ -584,10 +697,6 @@
     <header>
     <div class="logo">Masscratch 星商相昇</div>
     <div class="nav-actions">
-        <!-- 優惠及福利按鈕（黑白風格 + 資料夾路徑） -->
-        <a href="welfare/" class="nav-link-btn" style="color: #000000; text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 5px 12px; border-radius: 12px; background: rgba(0, 0, 0, 0.05); border: 1px solid rgba(0, 0, 0, 0.15); transition: all 0.2s ease;">
-            優惠及福利 Welfare Offer
-        </a>
         <button class="settings-btn" id="toggleSettings" aria-label="Settings">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
         </button>
@@ -688,13 +797,37 @@
                     treasurer: "財務", welfare: "福利", secretary: "文書"
                 },
                 names: {
-                    'Xu Chak Long': '許澤朗', 'Ng Hoi Laam': '吳凱嵐', 'Ku Ho Yin': '古皓然',
-                    'Yip Tsz Leong': '葉子亮', 'Chan Yu Hin': '陳宇軒', 'Lam Queenie': '林紫羽',
-                    'Yik Ho Sing': '易昊昇', 'Chan Wai Ki': '陳偉棋', 'Lam Wai Ho': '林偉豪',
-                    'Chan Yu Ting': '陳宇霆', 'Tsang Yiu Mak': '曾耀墨', 'Chu Ho Him': '朱灝謙',
-                    'Yau Chi Kiu': '邱梓橋', 'Cheng Yu Hon Mac': '鄭裕瀚'
+                    'Xu Chak Long': '許澤朗', 
+                    'Ng Hoi Laam': '吳凱嵐', 
+                    'Ku Ho Yin': '古皓然',
+                    'Yip Tsz Leong': '葉子亮', 
+                    'Chan Yu Hin': '陳宇軒', 
+                    'Lam Queenie': '林紫羽',
+                    'Yik Ho Sing': '易昊昇', 
+                    'Chan Wai Ki': '陳煒棋', 
+                    'Lam Wai Ho': '林偉灝',
+                    'Chan Yu Ting': '陳宇霆', 
+                    'Tsang Yiu Mak': '曾耀墨', 
+                    'Chu Ho Him': '朱灝謙',
+                    'Yau Chi Kiu': '邱梓橋', 
+                    'Cheng Yu Hon Mac': '鄭裕瀚'
                 },
-                bio: "你好！我是「Masscratch 星商相昇」的一分子。承蒙信任，今年我將全力以赴為元朗商會中學全體同學服務，傾聽你們的聲音，爭取更多福利，豐富我們的校園生活！"
+                bios: {
+                    'Xu Chak Long': '早晨啊咁多位！我係主席許澤朗Ken 嚟緊一年會聽晒大家意見，全力搞好校園！希望大家支持我哋Masscratch 啦🤪',
+                    'Ng Hoi Laam': 'Halo 大家好✨我係Karrie係masscratch嘅副主席🍡雖然可能唔係做得最好嗰個👻但係我一定會俾心機做好每一個活動👾所以希望大家多多支持1號候選內閣masscratch🐒',
+                    'Ku Ho Yin': 'Hihi 我係古皓然～ 🔥 嚟緊一年充滿幹勁，會全力輔助團隊辦好活動、幫大家爭取權益！記得投我哋一票呀🙌🎈',
+                    'Yip Tsz Leong': '大家好，早晨嗱喂，我係總務葉子亮～ 我會盡力做好，請支持 1 號 Masscratch🌝',
+                    'Chan Yu Hin': 'Halo！我係總務陳宇軒～ 我會搞掂所有細節，確保活動順利平穩！記得支持我哋啦💫',
+                    'Lam Queenie': 'Hello 大家好！我係 Queenie 我會發揮無限創意，設計超有風格嘅宣傳品同周邊！希望大家鍾意✨',
+                    'Yik Ho Sing': 'Hi~ 我係Hanson 我會用設計專長打造美感同實用兼備嘅文宣，靚靚咁展現最新資訊！請多支持⭐',
+                    'Chan Wai Ki': '大家好！我係宣傳陳偉棋 我會第一時間發佈最新資訊同福利，做大家同校方嘅溝通橋樑！記得 Follow 我哋啊～ 💌',
+                    'Lam Wai Ho': 'Hey 大家好！我係宣傳林偉豪 我會收集大家嘅意見，隨時優化我哋嘅服務～ 有咩想法隨時搵我哋傾呀 😆',
+                    'Chan Yu Ting': 'Hi~ 我係學術幹事 Leo 平時睇我好隨和 但我對學術活動超多諗頭！會辦更多多元活動，請多支持',
+                    'Tsang Yiu Mak': '大家好，我係財務幹事 Matt 我會嚴謹把關每一筆收支，確保財務透明，讓活動無後顧之憂！請支持 1 號 🤗',
+                    'Chu Ho Him': '大家好！我係福利幹事朱灝謙 我會向各大商家爭取最貼心嘅折扣，照顧大家日常所需！請支持 Masscratch🎉',
+                    'Yau Chi Kiu': 'Hi！我係福利幹事邱梓橋 大家需要啲乜我就去爭取！會用最熱情嘅態度跟進福利，記得支持 1 號呀 1️⃣',
+                    'Cheng Yu Hon Mac': '大家好，我係文書 Mac 我會細心整理資料，確保閣內外資訊透明高效！請多多指教 😛'
+                }
             },
             'en-us': {
                 school: "YUEN LONG MERCHANTS ASSOCIATION SECONDARY SCHOOL",
@@ -711,13 +844,37 @@
                     treasurer: "Treasurer", welfare: "Welfare Officer", secretary: "Secretary"
                 },
                 names: {
-                    'Xu Chak Long': 'Xu Chak Long', 'Ng Hoi Laam': 'Ng Hoi Laam', 'Ku Ho Yin': 'Ku Ho Yin',
-                    'Yip Tsz Leong': 'Yip Tsz Leong', 'Chan Yu Hin': 'Chan Yu Hin', 'Lam Queenie': 'Lam Queenie',
-                    'Yik Ho Sing': 'Yik Ho Sing', 'Chan Wai Ki': 'Chan Wai Ki', 'Lam Wai Ho': 'Lam Wai Ho',
-                    'Chan Yu Ting': 'Chan Yu Ting', 'Tsang Yiu Mak': 'Tsang Yiu Mak', 'Chu Ho Him': 'Chu Ho Him',
-                    'Yau Chi Kiu': 'Yau Chi Kiu', 'Cheng Yu Hon Mac': 'Cheng Yu Hon Mac'
+                    'Xu Chak Long': 'Ken Xu', 
+                    'Ng Hoi Laam': 'Karrie Ng', 
+                    'Ku Ho Yin': 'Vincent Ku',
+                    'Yip Tsz Leong': 'Callan Yip', 
+                    'Chan Yu Hin': 'Andy Chen', 
+                    'Lam Queenie': 'Queenie Lam',
+                    'Yik Ho Sing': 'Hanson Yik', 
+                    'Chan Wai Ki': 'Chess Chan', 
+                    'Lam Wai Ho': 'Elvis Lam',
+                    'Chan Yu Ting': 'Leo Chan', 
+                    'Tsang Yiu Mak': 'Matt Tsang', 
+                    'Chu Ho Him': 'Felix Chu',
+                    'Yau Chi Kiu': 'Cyprus Yau', 
+                    'Cheng Yu Hon Mac': 'Mac Cheng'
                 },
-                bio: "Hello! As a dedicated member of Masscratch, I am honored to stand for election. We aim to bring vibrant innovations, organize dynamic activities, and act as an authentic voice for all students at YLMASS."
+                bios: {
+                    'Xu Chak Long': '早晨啊咁多位！我係主席許澤朗Ken 嚟緊一年會聽晒大家意見，全力搞好校園！希望大家支持我哋Masscratch 啦🤪',
+                    'Ng Hoi Laam': 'Halo 大家好✨我係Karrie係masscratch嘅副主席🍡雖然可能唔係做得最好嗰個👻但係我一定會俾心機做好每一個活動👾所以希望大家多多支持1號候選內閣masscratch🐒',
+                    'Ku Ho Yin': 'Hihi 我係古皓然～ 🔥 嚟緊一年充滿幹勁，會全力輔助團隊辦好活動、幫大家爭取權益！記得投我哋一票呀🙌🎈',
+                    'Yip Tsz Leong': '大家好，早晨嗱喂，我係總務葉子亮～ 我會盡力做好，請支持 1 號 Masscratch🌝',
+                    'Chan Yu Hin': 'Halo！我係總務陳宇軒～ 我會搞掂所有細節，確保活動順利平穩！記得支持我哋啦💫',
+                    'Lam Queenie': 'Hello 大家好！我係 Queenie 我會發揮無限創意，設計超有風格嘅宣傳品同周邊！希望大家鍾意✨',
+                    'Yik Ho Sing': 'Hi~ 我係Hanson 我會用設計專長打造美感同實用兼備嘅文宣，靚靚咁展現最新資訊！請多支持⭐',
+                    'Chan Wai Ki': '大家好！我係宣傳陳偉棋 我會第一時間發佈最新資訊同福利，做大家同校方嘅溝通橋樑！記得 Follow 我哋啊～ 💌',
+                    'Lam Wai Ho': 'Hey 大家好！我係宣傳林偉豪 我會收集大家嘅意見，隨時優化我哋嘅服務～ 有咩想法隨時搵我哋傾呀 😆',
+                    'Chan Yu Ting': 'Hi~ 我係學術幹事 Leo 平時睇我好隨和 但我對學術活動超多諗頭！會辦更多多元活動，請多支持',
+                    'Tsang Yiu Mak': '大家好，我係財務幹事 Matt 我會嚴謹把關每一筆收支，確保財務透明，讓活動無後顧之憂！請支持 1 號 🤗',
+                    'Chu Ho Him': '大家好！我係福利幹事朱灝謙 我會向各大商家爭取最貼心嘅折扣，照顧大家日常所需！請支持 Masscratch🎉',
+                    'Yau Chi Kiu': 'Hi！我係福利幹事邱梓橋 大家需要啲乜我就去爭取！會用最熱情嘅態度跟進福利，記得支持 1 號呀 1️⃣',
+                    'Cheng Yu Hon Mac': '大家好，我係文書 Mac 我會細心整理資料，確保閣內外資訊透明高效！請多多指教 😛'
+                }
             }
         };
 
@@ -795,7 +952,7 @@
             document.getElementById('backAvatar').innerText = memberData.emoji;
             document.getElementById('backName').innerText = i18n[currentLang].names[memberData.key];
             document.getElementById('backRole').innerText = i18n[currentLang].roles[memberData.role];
-            document.getElementById('backBio').innerText = i18n[currentLang].bio;
+            document.getElementById('backBio').innerText = i18n[currentLang].bios[memberData.key] || i18n[currentLang].bio;
 
             const targetHandle = memberData.ig || 'masscratch';
             document.getElementById('backIgLink').href = `https://instagram.com/${targetHandle}`;
