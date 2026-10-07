@@ -275,9 +275,7 @@
             }
         };
 
-        const eventsData = {
-            upcoming: []
-        };
+        let eventsData = { upcoming: [] };
 
         function setCookie(name, value, days) {
             days = days || 365;
@@ -378,7 +376,24 @@
             });
         });
 
-        updateLanguage();
+        async function loadEventsFromJson() {
+            try {
+                const res = await fetch('/data/events.json', { cache: 'no-store' });
+                if (res.ok) {
+                    const data = await res.json();
+                    // Support either array or { upcoming: [...] }
+                    if (Array.isArray(data)) {
+                        eventsData.upcoming = data;
+                    } else if (data && Array.isArray(data.upcoming)) {
+                        eventsData.upcoming = data.upcoming;
+                    }
+                }
+            } catch (e) {
+                console.warn('events.json load failed', e);
+            }
+            updateLanguage();
+        }
+        loadEventsFromJson();
     </script>
 
     <footer class="site-footer">
