@@ -133,17 +133,6 @@
         "zh": "消費滿 $688 可入會，其後九折",
         "en": "$688+ Membership, then 10% off"
       }
-    },
-    {
-      "name": {
-        "zh": "測試",
-        "en": "test"
-      },
-      "handle": "@test",
-      "benefit": {
-        "zh": "測試",
-        "en": "test"
-      }
     }
   ]
 }
