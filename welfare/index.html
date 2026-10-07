@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Masscratch 星商相昇 - YLMASS 2026-27</title>
-    <style>
+    <title>學生福利 - Masscratch 星商相昇</title>
+        <link rel="icon" href="/assets/favicon.png" type="image/png" sizes="48x48">
+    <link rel="icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32">
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<style>
         :root {
             --bg-color: #000000;
             --card-bg: rgba(22, 22, 23, 0.8);
@@ -14,25 +18,10 @@
             --nav-bg: rgba(22, 22, 23, 0.8);
             --border: rgba(255, 255, 255, 0.1);
             --font-main: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
-            --card-gap: 1.5rem;
-            --overlay-bg: rgba(0, 0, 0, 0.4);
-            
             --hero-ig-bg: rgba(255, 255, 255, 0.06);
             --hero-ig-text: #f5f5f7;
             --hero-ig-border: rgba(255, 255, 255, 0.15);
-
-            --portal-back-bg: rgba(28, 28, 30, 0.95);
-            --portal-back-border: rgba(255, 255, 255, 0.15);
-            --close-btn-bg: rgba(255, 255, 255, 0.1);
-            --close-btn-hover: rgba(255, 255, 255, 0.2);
-            --close-btn-text: #ffffff;
-            --avatar-bg-start: #3a3a3c;
-            --avatar-bg-end: #1c1c1e;
-
-            --cookie-bg: rgba(28, 28, 30, 0.9);
-            --cookie-border: rgba(255, 255, 255, 0.15);
         }
-
         [data-theme="light"] {
             --bg-color: #f5f5f7;
             --card-bg: rgba(255, 255, 255, 0.8);
@@ -41,37 +30,14 @@
             --accent: #0071e3;
             --nav-bg: rgba(245, 245, 247, 0.8);
             --border: rgba(0, 0, 0, 0.1);
-            --overlay-bg: rgba(255, 255, 255, 0.4);
-            
             --hero-ig-bg: #1d1d1f;
             --hero-ig-text: #ffffff;
             --hero-ig-border: transparent;
-
-            --portal-back-bg: rgba(255, 255, 255, 0.95);
-            --portal-back-border: rgba(0, 0, 0, 0.1);
-            --close-btn-bg: rgba(0, 0, 0, 0.05);
-            --close-btn-hover: rgba(0, 0, 0, 0.1);
-            --close-btn-text: #1d1d1f;
-            --avatar-bg-start: #e5e5ea;
-            --avatar-bg-end: #ffffff;
-
-            --cookie-bg: rgba(255, 255, 255, 0.95);
-            --cookie-border: rgba(0, 0, 0, 0.1);
         }
-
         html[data-size="sm"] { font-size: 14px; }
         html[data-size="md"] { font-size: 16px; }
         html[data-size="lg"] { font-size: 18px; }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            user-select: none;
-            -webkit-user-select: none;
-            -webkit-tap-highlight-color: transparent;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent; }
         body {
             font-family: var(--font-main);
             background-color: var(--bg-color);
@@ -82,624 +48,96 @@
             -webkit-font-smoothing: antialiased;
             padding-left: env(safe-area-inset-left);
             padding-right: env(safe-area-inset-right);
-        }
-
-        body.modal-open {
-            overflow: hidden;
-        }
-
-        /* --- Header & Navigation --- */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: 48px;
-            background: var(--nav-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 100;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 1.5rem;
-            padding-top: env(safe-area-inset-top);
-            height: calc(48px + env(safe-area-inset-top));
-        }
-
-        .logo {
-            font-family: var(--font-main);
-            font-weight: 800;
-            font-size: 1rem;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-actions {
-            display: flex;
-            gap: 1.2rem;
-            align-items: center;
-        }
-
-        .settings-btn {
-            background: none;
-            border: none;
-            color: var(--text-main);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 4px;
-        }
-
-        /* --- Hero Section --- */
-        .hero {
             min-height: 100vh;
-            min-height: 100dvh;
-            height: 100vh;
-            height: 100dvh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: calc(48px + env(safe-area-inset-top)) 1.5rem env(safe-area-inset-bottom);
-            background: transparent;
-            box-sizing: border-box;
         }
-
-        .school-name {
-            font-family: var(--font-main);
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--text-sub);
-            letter-spacing: 2px;
-            margin-bottom: 0.8rem;
-            max-width: 95%;
+        header {
+            position: fixed; top: 0; width: 100%;
+            height: calc(48px + env(safe-area-inset-top));
+            padding-top: env(safe-area-inset-top);
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            z-index: 100; border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+            padding-left: 1.5rem; padding-right: 1.5rem;
         }
-
-        .cabinet-title {
-            font-family: var(--font-main);
-            font-size: clamp(1.35rem, 0.7rem + 6.5vw, 3.8rem);
-            font-weight: 800;
-            letter-spacing: -1px;
-            color: var(--text-main);
-            margin-bottom: 1.2rem;
-            line-height: 1.15;
-            width: 100%;
-            max-width: 100%;
-            padding: 0 0.25rem;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+        .logo {
+            display: inline-flex; align-items: center; gap: 0.55rem;
+            font-family: var(--font-main); font-weight: 800; font-size: 1rem;
+            letter-spacing: -0.5px; color: var(--text-main); text-decoration: none;
         }
-
-        .hero-desc {
-            font-family: var(--font-main);
-            font-size: clamp(0.95rem, 0.85rem + 1.2vw, 1.5rem);
-            color: var(--text-sub);
-            max-width: 92%;
-            line-height: 1.5;
-            margin-bottom: 2rem;
-            padding: 0 0.5rem;
+        .logo-img {
+            width: 36px; height: 36px; border-radius: 50%; object-fit: cover;
+            flex-shrink: 0; border: 1.5px solid var(--border); background: #fff;
         }
-
-        .hero-desc br {
-            display: block;
-            content: "";
-            margin-top: 0.35rem;
+        .nav-actions { display: flex; gap: 0.75rem; align-items: center; }
+        .nav-back-btn {
+            display: inline-flex; align-items: center; gap: 0.35rem;
+            background: none; border: none; color: var(--accent);
+            font-size: 0.9rem; font-weight: 500; cursor: pointer;
+            text-decoration: none; padding: 4px 8px; border-radius: 8px;
+            transition: background-color 0.2s;
         }
-
-        .hero-ig-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.6rem;
-            background-color: var(--hero-ig-bg);
-            color: var(--hero-ig-text);
-            border: 1px solid var(--hero-ig-border);
-            text-decoration: none;
-            width: 260px;
-            max-width: 90%;
-            height: 46px;
-            border-radius: 23px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s;
+        .nav-back-btn:active { background-color: rgba(128,128,128,0.12); }
+        .settings-btn {
+            background: none; border: none; color: var(--text-main);
+            cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 4px;
         }
-
-        .hero-ig-btn:active {
-            transform: scale(0.97);
-            background-color: rgba(255, 255, 255, 0.15);
-        }
-
-        .hero-socials {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-            margin-top: 0.25rem;
-        }
-
-        .hero-actions {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            margin-top: 1rem;
-            width: 100%;
-            max-width: 360px;
-            padding: 0 0.5rem;
-        }
-
-        .hero-action-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.4rem;
-            flex: 1 1 0;
-            min-width: 0;
-            height: 46px;
-            border-radius: 23px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-decoration: none;
-            white-space: nowrap;
-            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s, background-color 0.2s;
-        }
-
-        .hero-action-btn:active {
-            transform: scale(0.97);
-            opacity: 0.9;
-        }
-
-        .hero-welfare-btn {
-            background-color: var(--accent);
-            color: #ffffff;
-            border: none;
-        }
-
-        .hero-event-btn {
-            background-color: var(--hero-ig-bg);
-            color: var(--hero-ig-text);
-            border: 1px solid var(--hero-ig-border);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        /* Threads – circular icon button */
-        .hero-threads-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            background-color: var(--hero-ig-bg);
-            color: var(--hero-ig-text);
-            border: 1px solid var(--hero-ig-border);
-            text-decoration: none;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s;
-            flex-shrink: 0;
-        }
-
-        .hero-threads-btn:active {
-            transform: scale(0.94);
-            background-color: rgba(255, 255, 255, 0.15);
-        }
-
-        /* YouTube – circular icon button (black & white) */
-        .hero-yt-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            background-color: var(--hero-ig-bg);
-            color: var(--hero-ig-text);
-            border: 1px solid var(--hero-ig-border);
-            text-decoration: none;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s;
-            flex-shrink: 0;
-        }
-
-        .hero-yt-btn:active {
-            transform: scale(0.94);
-            background-color: rgba(255, 255, 255, 0.15);
-        }
-
-        /* --- Content Container & Grid --- */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 2.5rem 1rem 3rem;
-        }
-
-        .section-title {
-            font-size: clamp(1.4rem, 1.2rem + 2vw, 2rem);
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.5px;
-            padding: 0 0.5rem;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
-            column-gap: 0.9rem;
-            row-gap: 1rem;
-        }
-
-        /* --- Standard Front Cards --- */
-        .card-static {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 1.25rem 1.1rem;
-            min-height: 130px;
-            height: auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-            cursor: pointer;
-            transition: border-color 0.3s, background-color 0.3s;
-        }
-
-        .card-static:active {
-            background-color: rgba(128, 128, 128, 0.1);
-        }
-
-        .role-badge {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-        }
-
-        .member-name {
-            font-size: clamp(1.05rem, 0.95rem + 1.5vw, 1.5rem);
-            font-weight: 600;
-            line-height: 1.25;
-            padding-right: 1.2rem;
-        }
-
-        .card-arrow {
-            position: absolute;
-            bottom: 0.9rem;
-            right: 0.9rem;
-            color: var(--text-sub);
-            opacity: 0.5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s ease, opacity 0.2s ease;
-        }
-
-        /* --- Fullscreen Card Portal --- */
-        .flip-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1000;
-            pointer-events: none;
-            display: none;
-            perspective: 1200px;
-            background-color: transparent;
-            /* Avoid animating backdrop-filter — apply instantly for better FPS */
-            transition: background-color 0.35s ease;
-            contain: strict;
-        }
-
-        .flip-overlay.is-active {
-            display: block;
-            pointer-events: auto;
-        }
-
-        .flip-overlay.is-blurred {
-            background-color: var(--overlay-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-        }
-
-        .portal-card {
-            position: absolute;
-            transform-style: preserve-3d;
-            /* Only animate compositor-friendly properties */
-            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                        top 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                        left 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                        width 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                        height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: transform, top, left, width, height;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-        }
-
-        .portal-face {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-            border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
-            /* Promote to own layer */
-            transform: translateZ(0);
-        }
-
-        .portal-front {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .portal-back {
-            background: var(--portal-back-bg);
-            border: 1px solid var(--portal-back-border);
-            color: var(--text-main);
-            transform: rotateY(180deg);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            transition: background-color 0.5s ease, border-color 0.5s ease;
-        }
-
-        .back-container {
-            max-width: 360px;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            opacity: 0;
-            transform: scale(0.94) translate3d(0, 10px, 0);
-            transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.12s,
-                        transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.12s;
-            padding: 1rem 0;
-            margin: auto 0;
-            will-change: opacity, transform;
-        }
-
-        .flip-overlay.is-flipped .back-container {
-            opacity: 1;
-            transform: scale(1) translate3d(0, 0, 0);
-        }
-
-        .back-avatar {
-            width: 96px;
-            height: 96px;
-            border-radius: 50%;
-            background: var(--avatar-bg-start);
-            border: 3px solid var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .back-name {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 0.1rem;
-        }
-
-        .back-role {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 1rem;
-        }
-
-        .back-bio {
-            font-size: 0.95rem;
-            color: var(--text-sub);
-            line-height: 1.5;
-            margin-bottom: 1.8rem;
-            text-align: center;
-            padding: 0 0.5rem;
-        }
-
-        .back-ig-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            color: #ffffff;
-            text-decoration: none;
-            padding: 0.75rem 2rem;
-            border-radius: 22px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            box-shadow: 0 8px 16px rgba(220, 39, 67, 0.2);
-        }
-
-        .portal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--close-btn-bg);
-            border: none;
-            color: var(--close-btn-text);
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1100;
-            opacity: 0;
-            transition: opacity 0.25s ease, background-color 0.2s ease;
-        }
-        
-        .flip-overlay.is-flipped .portal-close {
-            opacity: 0.8;
-        }
-
-        /* --- Settings Drawer --- */
         .settings-panel {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 290px;
-            height: 100%;
+            position: fixed; top: 0; right: 0; width: 290px; height: 100%;
             background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border-left: 1px solid var(--border);
-            box-shadow: -10px 0 30px rgba(0,0,0,0.15);
-            z-index: 150;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.15); z-index: 150;
             transform: translate3d(100%, 0, 0);
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            padding: 5rem 1.5rem 1.5rem;
-            will-change: transform;
-            contain: layout style;
+            padding: 5rem 1.5rem 1.5rem; will-change: transform; contain: layout style;
         }
-
         .settings-panel.is-open { transform: translate3d(0, 0, 0); }
         .setting-group { margin-bottom: 2rem; }
-        .setting-title {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-sub);
-            text-transform: uppercase;
-            margin-bottom: 0.6rem;
-        }
-
-        .btn-group {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-            gap: 0.4rem;
-        }
-
+        .setting-title { font-size: 0.85rem; font-weight: 600; color: var(--text-sub); text-transform: uppercase; margin-bottom: 0.6rem; }
+        .btn-group { display: grid; grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); gap: 0.4rem; }
         .setting-btn-opt {
-            background: rgba(128,128,128,0.12);
-            border: 1px solid transparent;
-            color: var(--text-main);
-            padding: 0.55rem;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            font-weight: 500;
+            background: rgba(128,128,128,0.12); border: 1px solid transparent;
+            color: var(--text-main); padding: 0.55rem; border-radius: 10px;
+            cursor: pointer; font-size: 0.8rem; font-weight: 500;
         }
-
-        .setting-btn-opt.active {
-            background: var(--accent);
-            color: #ffffff;
+        .setting-btn-opt.active { background: var(--accent); color: #ffffff; }
+        .page-hero {
+            padding: calc(48px + env(safe-area-inset-top) + 2.5rem) 1.25rem 1.5rem;
+            text-align: center; max-width: 1100px; margin: 0 auto;
         }
-
-        /* --- Scalable & Perfect Cookie Banner --- */
-        .cookie-banner {
-            position: fixed;
-            bottom: max(24px, env(safe-area-inset-bottom));
-            left: 50%;
-            transform: translate3d(-50%, 120%, 0);
-            width: calc(100% - 32px);
-            max-width: 860px; 
-            background: var(--cookie-bg);
-            border: 1px solid var(--cookie-border);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-radius: 20px;
-            padding: 20px 24px;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
-            z-index: 2000;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: transform;
-            contain: layout style;
+        .page-title {
+            font-family: var(--font-main);
+            font-size: clamp(1.6rem, 1.2rem + 2.5vw, 2.4rem);
+            font-weight: 800; letter-spacing: -0.5px; margin-bottom: 0.6rem; line-height: 1.2;
         }
-
-        .cookie-banner.is-visible {
-            transform: translate3d(-50%, 0, 0);
+        .page-subtitle { font-size: 1rem; color: var(--text-sub); line-height: 1.5; max-width: 90%; margin: 0 auto; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0.5rem 1rem 4rem; }
+        .section-label {
+            font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.8px; color: var(--accent); margin: 1.75rem 0 0.75rem 0.25rem;
         }
-
-        /* Fixed absolute sizes prevent text scaling layout breakages */
-        .cookie-text {
-            font-size: 14px !important;
-            line-height: 1.45 !important;
-            color: var(--text-main);
-            text-align: left;
-            flex: 1;
+        .welfare-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 0.85rem; }
+        .welfare-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border); border-radius: 16px;
+            padding: 1.15rem 1.25rem; display: flex; flex-direction: column; gap: 0.35rem;
+            transition: border-color 0.25s, background-color 0.25s;
         }
+        .welfare-card:active { background-color: rgba(128,128,128,0.08); }
+        .welfare-name { font-size: 1.05rem; font-weight: 600; color: var(--text-main); line-height: 1.3; }
+        .welfare-handle { font-size: 0.8rem; color: var(--accent); font-weight: 500; }
+        .welfare-benefit { font-size: 0.9rem; color: var(--text-sub); line-height: 1.45; margin-top: 0.15rem; }
+        .welfare-benefit.empty { font-style: italic; opacity: 0.7; }
+        .footer-note { text-align: center; font-size: 0.8rem; color: var(--text-sub); margin-top: 2rem; padding: 0 1rem; line-height: 1.5; }
 
-        .cookie-text span {
-            color: var(--text-sub);
-            display: block;
-            margin-top: 4px;
-            font-size: 12px !important;
-            text-align: left;
-        }
-
-        .cookie-actions {
-            display: flex;
-            gap: 8px;
-            justify-content: flex-end;
-            align-items: center;
-            flex-shrink: 0;
-        }
-
-        .cookie-btn {
-            padding: 10px 20px;
-            font-size: 13.5px !important;
-            font-weight: 600;
-            border-radius: 10px;
-            border: none;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-
-        .cookie-btn-accept {
-            background-color: var(--text-main);
-            color: var(--bg-color);
-        }
-
-        .cookie-btn-decline {
-            background-color: rgba(128, 128, 128, 0.15);
-            color: var(--text-sub);
-        }
-
-        /* --- Site Footer --- */
         .site-footer {
-            position: relative;
-            z-index: 1;
             border-top: 1px solid var(--border);
-            padding: 2.75rem 1.25rem calc(2.5rem + env(safe-area-inset-bottom));
-            margin-top: 2rem;
-            margin-bottom: 0;
+            padding: 2.5rem 1.25rem 2rem;
+            margin-top: 1rem;
             text-align: center;
-            background: var(--bg-color);
-            /* Extra space so cookie banner never covers the footer */
-            padding-bottom: calc(6rem + env(safe-area-inset-bottom));
         }
-
         .footer-inner {
             max-width: 720px;
             margin: 0 auto;
@@ -708,232 +146,70 @@
             align-items: center;
             gap: 0.65rem;
         }
-
         .footer-brand {
             font-weight: 700;
             font-size: 0.95rem;
             letter-spacing: -0.3px;
             color: var(--text-main);
         }
-
         .footer-line {
             font-size: 0.8rem;
             color: var(--text-sub);
             line-height: 1.5;
         }
-
         .footer-line a {
             color: var(--accent);
             text-decoration: none;
         }
-
-        .footer-line a:hover {
-            text-decoration: underline;
-        }
-
+        .footer-line a:hover { text-decoration: underline; }
         .footer-copy {
             font-size: 0.75rem;
             color: var(--text-sub);
             opacity: 0.85;
             margin-top: 0.4rem;
         }
-
         .footer-credit {
             font-size: 0.75rem;
             color: var(--text-sub);
             margin-top: 0.15rem;
         }
-
         .footer-credit a {
             color: var(--text-main);
             text-decoration: none;
             font-weight: 500;
         }
-
-        .footer-credit a:hover {
-            color: var(--accent);
-        }
-
-        /* --- Responsive Media Queries --- */
-        @media (max-width: 480px) {
-            .hero {
-                min-height: 100dvh;
-                height: 100dvh;
-                padding: calc(48px + env(safe-area-inset-top)) 1rem max(1rem, env(safe-area-inset-bottom));
-                justify-content: center;
-                align-items: center;
-            }
-            .school-name {
-                font-size: 0.8rem;
-                letter-spacing: 1.5px;
-                margin-bottom: 0.6rem;
-            }
-            .cabinet-title {
-                margin-bottom: 1rem;
-                font-weight: 800;
-                font-size: clamp(1.3rem, 0.55rem + 7.2vw, 2.2rem);
-                letter-spacing: -0.8px;
-            }
-            .hero-desc {
-                margin-bottom: 1.8rem;
-            }
-            .hero-ig-btn {
-                width: auto;
-                max-width: 240px;
-                height: 44px;
-                font-size: 0.8rem;
-                padding: 0 1rem;
-            }
-            .hero-threads-btn,
-            .hero-yt-btn {
-                width: 44px;
-                height: 44px;
-            }
-            .hero-socials {
-                gap: 0.6rem;
-            }
-            .hero-actions {
-                max-width: 320px;
-                gap: 0.6rem;
-                margin-top: 0.85rem;
-            }
-            .hero-action-btn {
-                height: 44px;
-                font-size: 0.8rem;
-            }
-            .container {
-                padding: 2rem 0.85rem 2.5rem;
-            }
-            .team-grid {
-                grid-template-columns: repeat(auto-fit, minmax(min(100%, 145px), 1fr));
-                column-gap: 0.7rem;
-                row-gap: 0.85rem;
-            }
-            .card-static {
-                padding: 1.1rem 0.95rem;
-                min-height: 120px;
-                border-radius: 14px;
-            }
-            .role-badge {
-                font-size: 0.65rem;
-            }
-            .member-name {
-                font-size: 1.05rem;
-            }
-            .card-arrow {
-                bottom: 0.75rem;
-                right: 0.75rem;
-            }
-            .section-title {
-                margin-bottom: 1.25rem;
-            }
-            header {
-                padding: 0 1rem;
-            }
-            .logo {
-                font-size: 0.9rem;
-                font-weight: 800;
-            }
-        }
-
-        @media (min-width: 481px) and (max-width: 767px) {
-            .team-grid {
-                grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
-                column-gap: 1rem;
-                row-gap: 1.1rem;
-            }
-            .card-static {
-                min-height: 140px;
-                padding: 1.4rem 1.2rem;
-            }
-            .member-name {
-                font-size: 1.25rem;
-            }
-        }
+        .footer-credit a:hover { color: var(--accent); }
 
         @media (min-width: 768px) {
-            :root { --card-gap: 2.5rem; }
-            .cabinet-title { 
-                font-size: 3.8rem; 
-                letter-spacing: -2px; 
-                margin-bottom: 1.5rem;
-                white-space: nowrap;
-                padding: 0;
-            }
-            .hero-desc { 
-                font-size: 1.5rem; 
-                margin-bottom: 2.5rem; 
-                max-width: 900px;
-                padding: 0;
-            }
-            .container {
-                padding: 3rem 1.5rem;
-            }
-            .section-title {
-                font-size: 2rem;
-                margin-bottom: 2rem;
-            }
-            .team-grid {
-                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-                column-gap: 1.5rem;
-                row-gap: var(--card-gap);
-            }
-            .card-static {
-                padding: 1.8rem;
-                height: 160px;
-                min-height: 160px;
-                border-radius: 18px;
-            }
-            .role-badge {
-                font-size: 0.8rem;
-                margin-bottom: 0.4rem;
-            }
-            .member-name {
-                font-size: 1.5rem;
-                padding-right: 0;
-            }
-            .card-arrow {
-                bottom: 1.2rem;
-                right: 1.2rem;
-            }
-            header { padding: 0 2rem; }
-            .card-static:hover { border-color: var(--accent); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); }
-            .card-static:hover .card-arrow { transform: translateX(4px); opacity: 1; }
-            .hero-ig-btn:hover { transform: translateY(-2px) scale(1.02); background-color: rgba(255, 255, 255, 0.12); }
-            [data-theme="light"] .hero-ig-btn:hover { background-color: #333336; opacity: 0.9; }
-            .hero-threads-btn:hover,
-            .hero-yt-btn:hover { transform: translateY(-2px) scale(1.05); background-color: rgba(255, 255, 255, 0.12); }
-            [data-theme="light"] .hero-threads-btn:hover,
-            [data-theme="light"] .hero-yt-btn:hover { background-color: #333336; opacity: 0.9; }
-            .hero-welfare-btn:hover { transform: translateY(-2px) scale(1.02); opacity: 0.92; }
-            .hero-event-btn:hover { transform: translateY(-2px) scale(1.02); background-color: rgba(255, 255, 255, 0.12); }
-            [data-theme="light"] .hero-event-btn:hover { background-color: #333336; opacity: 0.9; }
-            .portal-close:hover { background: var(--close-btn-hover); opacity: 1 !important; }
+            header { padding-left: 2rem; padding-right: 2rem; }
             .settings-panel { width: 320px; padding: 6rem 2rem 2rem; }
-            
-            /* Enforce horizontal alignment layout on larger screens */
-            .cookie-banner {
-                flex-direction: row !important;
-                align-items: center;
-                justify-content: space-between;
-                gap: 24px;
-                padding: 20px 28px;
-            }
+            .page-hero { padding-top: calc(48px + 3.5rem); }
+            .welfare-card:hover { border-color: var(--accent); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+            .container { padding: 1rem 1.5rem 5rem; }
+        }
+        @media (max-width: 480px) {
+            header { padding-left: 1rem; padding-right: 1rem; }
+            .logo { font-size: 0.9rem; } .logo-img { width: 32px; height: 32px; }
+            .page-hero { padding: calc(48px + env(safe-area-inset-top) + 1.75rem) 1rem 1.25rem; }
+            .welfare-card { padding: 1rem 1.1rem; border-radius: 14px; }
+            .welfare-name { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
-
     <header>
-    <div class="logo">Masscratch 星商相昇</div>
-    <div class="nav-actions">
-        <button class="settings-btn" id="toggleSettings" aria-label="Settings">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-        </button>
-    </div>
+        <a href="/" class="logo"><img class="logo-img" src="/assets/logo.png" alt="Masscratch" width="36" height="36"><span>Masscratch 星商相昇</span></a>
+        <div class="nav-actions">
+            <a href="/" class="nav-back-btn" id="btnBack">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                <span id="txtBack">主頁</span>
+            </a>
+            <button class="settings-btn" id="toggleSettings" aria-label="Settings">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            </button>
+        </div>
     </header>
 
-    <!-- Settings Panel -->
     <div class="settings-panel" id="settingsPanel">
         <div class="setting-group">
             <div class="setting-title" id="lblTheme">外觀設計</div>
@@ -959,81 +235,147 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <p class="school-name" id="txtSchool">元朗商會中學</p>
-        <h1 class="cabinet-title">Masscratch 星商相昇</h1>
-        <p class="hero-desc" id="txtSlogan">2026-2027 學生會候選內閣 — 凝聚星光，與商相伴，破浪齊昇。</p>
-        
-        <div class="hero-socials">
-            <a href="https://www.instagram.com/masscratch/" target="_blank" class="hero-ig-btn" id="btnHeroIg" rel="noopener noreferrer">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/></svg>
-                <span>Masscratch Official IG</span>
-            </a>
-
-            <a href="https://www.threads.com/@masscratch" target="_blank" class="hero-threads-btn" id="btnHeroThreads" aria-label="Threads" rel="noopener noreferrer">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 192 192" aria-hidden="true">
-                    <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"/>
-                </svg>
-            </a>
-
-            <a href="https://www.youtube.com/@Masscratch" target="_blank" class="hero-yt-btn" id="btnHeroYt" aria-label="YouTube" rel="noopener noreferrer">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 461.001 461.001" aria-hidden="true">
-                    <path d="M365.257,67.393H95.744C42.866,67.393,0,110.259,0,163.137v134.728c0,52.878,42.866,95.744,95.744,95.744h269.513c52.878,0,95.744-42.866,95.744-95.744V163.137C461.001,110.259,418.135,67.393,365.257,67.393z M300.506,237.056l-126.06,60.123c-3.359,1.602-7.239-0.847-7.239-4.568V168.607c0-3.774,3.982-6.22,7.348-4.514l126.06,63.881C304.363,229.873,304.298,235.248,300.506,237.056z"/>
-                </svg>
-            </a>
-        </div>
-
-        <div class="hero-actions">
-            <a href="/welfare" class="hero-action-btn hero-welfare-btn" id="btnHeroWelfare">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
-                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z"/>
-                </svg>
-                <span id="txtWelfareBtn">學生福利</span>
-            </a>
-            <a href="/event" class="hero-action-btn hero-event-btn" id="btnHeroEvent">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
-                    <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
-                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                </svg>
-                <span id="txtEventBtn">預計活動</span>
-            </a>
-        </div>
+    <section class="page-hero">
+        <h1 class="page-title" id="txtPageTitle">學生福利</h1>
+        <p class="page-subtitle" id="txtPageSub">Masscratch 為你爭取的專屬優惠與福利</p>
     </section>
 
-    <!-- Team Section -->
-    <section class="container">
-        <h2 class="section-title" id="txtTeamTitle">內閣幹事陣容</h2>
-        <div class="team-grid" id="teamGrid"></div>
-    </section>
-
-    <!-- Fullscreen Portal -->
-    <div class="flip-overlay" id="flipPortal">
-        <div class="portal-card" id="portalCard">
-            <div class="portal-face portal-front" id="portalFrontContent"></div>
-            <div class="portal-face portal-back">
-                <button class="portal-close" id="closePortal" aria-label="Close">✕</button>
-                <div class="back-container">
-                    <div class="back-avatar" id="backAvatar">✨</div>
-                    <h3 class="back-name" id="backName">姓名</h3>
-                    <div class="back-role" id="backRole">職位</div>
-                    <p class="back-bio" id="backBio">個人簡介載入中...</p>
-                    <a href="https://instagram.com" target="_blank" class="back-ig-btn" id="backIgLink">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/></svg>
-                        Instagram
-                    </a>
-                </div>
-            </div>
-        </div>
+    <div class="container">
+        <div class="section-label" id="lblOrg">組織福利</div>
+        <div class="welfare-list" id="listOrg"></div>
+        <div class="section-label" id="lblMerchants">商戶優惠</div>
+        <div class="welfare-list" id="listMerchants"></div>
+        <p class="footer-note" id="txtFooter">優惠詳情以商戶最新公佈為準 · 出示學生證或按指示使用</p>
     </div>
 
-    <!-- Site Footer -->
+    <script>
+        const i18n = {
+            zh: {
+                back: "主頁", pageTitle: "學生福利", pageSub: "Masscratch 為你爭取的專屬優惠與福利",
+                org: "組織福利", merchants: "商戶優惠",
+                footer: "優惠詳情以商戶最新公佈為準 · 出示學生證或按指示使用",
+                theme: "外觀設計", lang: "語言切換", textSize: "字體大小", dark: "深色", light: "淺色", noDetail: "詳情稍後公佈"
+            },
+            'en-us': {
+                back: "Home", pageTitle: "Student Welfare", pageSub: "Exclusive offers secured by Masscratch for you",
+                org: "Organisation Benefits", merchants: "Merchant Offers",
+                footer: "Offers subject to merchant terms · Present student card or follow instructions",
+                theme: "Appearance", lang: "Language", textSize: "Text Size", dark: "Dark", light: "Light", noDetail: "Details coming soon"
+            }
+        };
+
+        let welfareData = { org: [], merchants: [] };
+
+        function setCookie(name, value, days = 365) {
+            const expires = new Date(Date.now() + days * 864e5).toUTCString();
+            document.cookie = name + "=" + encodeURIComponent(value) + "; expires=" + expires + "; path=/; SameSite=Strict";
+        }
+        function getCookie(name) {
+            return document.cookie.split("; ").reduce(function(r, v) {
+                var parts = v.split("=");
+                return parts[0] === name ? decodeURIComponent(parts[1]) : r;
+            }, "");
+        }
+
+        var isCookieAllowed = getCookie("cookieConsent") === "allowed";
+        var currentLang = isCookieAllowed ? (getCookie("prefLang") || "zh") : "zh";
+        var savedTheme = isCookieAllowed ? (getCookie("prefTheme") || "light") : "light";
+        var savedSize = isCookieAllowed ? (getCookie("prefSize") || "md") : "md";
+        document.documentElement.setAttribute("data-theme", savedTheme);
+        document.documentElement.setAttribute("data-size", savedSize);
+
+        function renderList(containerId, items) {
+            var el = document.getElementById(containerId);
+            el.innerHTML = "";
+            var langKey = currentLang === "zh" ? "zh" : "en";
+            items.forEach(function(item) {
+                var card = document.createElement("div");
+                card.className = "welfare-card";
+                var benefitText = item.benefit[langKey] || item.benefit.zh;
+                var isEmpty = !benefitText.trim();
+                card.innerHTML = '<div class="welfare-name">' + (item.name[langKey] || item.name.zh) + '</div>' +
+                    (item.handle ? '<div class="welfare-handle">' + item.handle + '</div>' : '') +
+                    '<div class="welfare-benefit' + (isEmpty ? ' empty' : '') + '">' + (isEmpty ? i18n[currentLang].noDetail : benefitText) + '</div>';
+                el.appendChild(card);
+            });
+        }
+
+        function updateLanguage() {
+            var d = i18n[currentLang];
+            document.getElementById("txtBack").innerText = d.back;
+            document.getElementById("txtPageTitle").innerText = d.pageTitle;
+            document.getElementById("txtPageSub").innerText = d.pageSub;
+            document.getElementById("lblOrg").innerText = d.org;
+            document.getElementById("lblMerchants").innerText = d.merchants;
+            document.getElementById("txtFooter").innerText = d.footer;
+            document.getElementById("lblTheme").innerText = d.theme;
+            document.getElementById("lblLang").innerText = d.lang;
+            document.getElementById("lblTextSize").innerText = d.textSize;
+            document.getElementById("btnDark").innerText = d.dark;
+            document.getElementById("btnLight").innerText = d.light;
+            renderList("listOrg", welfareData.org);
+            renderList("listMerchants", welfareData.merchants);
+            syncActiveButtons();
+        }
+
+        function syncActiveButtons() {
+            var theme = document.documentElement.getAttribute("data-theme");
+            var size = document.documentElement.getAttribute("data-size");
+            document.querySelectorAll('[data-opt="theme"]').forEach(function(b) { b.classList.toggle("active", b.dataset.value === theme); });
+            document.querySelectorAll('[data-opt="size"]').forEach(function(b) { b.classList.toggle("active", b.dataset.value === size); });
+            document.querySelectorAll('[data-opt="lang"]').forEach(function(b) { b.classList.toggle("active", b.dataset.value === currentLang); });
+        }
+
+        var toggleSettings = document.getElementById("toggleSettings");
+        var settingsPanel = document.getElementById("settingsPanel");
+        toggleSettings.addEventListener("click", function(e) { e.stopPropagation(); settingsPanel.classList.toggle("is-open"); });
+        document.addEventListener("click", function(e) {
+            if (!settingsPanel.contains(e.target) && !toggleSettings.contains(e.target)) settingsPanel.classList.remove("is-open");
+        });
+
+        document.querySelectorAll(".setting-btn-opt").forEach(function(btn) {
+            btn.addEventListener("click", function() {
+                var optType = this.dataset.opt, val = this.dataset.value;
+                this.parentElement.querySelectorAll(".setting-btn-opt").forEach(function(b) { b.classList.remove("active"); });
+                this.classList.add("active");
+                if (optType === "theme") {
+                    document.documentElement.setAttribute("data-theme", val);
+                    if (isCookieAllowed) setCookie("prefTheme", val);
+                } else if (optType === "size") {
+                    document.documentElement.setAttribute("data-size", val);
+                    if (isCookieAllowed) setCookie("prefSize", val);
+                } else if (optType === "lang") {
+                    currentLang = val;
+                    if (isCookieAllowed) setCookie("prefLang", val);
+                    updateLanguage();
+                }
+            });
+        });
+
+        async function loadWelfareFromJson() {
+            try {
+                const res = await fetch('/data/welfare.json', { cache: 'no-store' });
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && typeof data === 'object') {
+                        welfareData.org = data.org || [];
+                        welfareData.merchants = data.merchants || [];
+                    }
+                }
+            } catch (e) {
+                console.warn('welfare.json load failed', e);
+            }
+            updateLanguage();
+        }
+        loadWelfareFromJson();
+    </script>
+
     <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-brand">Masscratch 星商相昇</div>
-            <div class="footer-line" id="txtFooterAddr">元朗豐年路20號 · 20 Fung Nin Road, Yuen Long, NT</div>
+            <div class="footer-line">元朗豐年路20號 · 20 Fung Nin Road, Yuen Long, NT</div>
             <div class="footer-line"><a href="mailto:enquiry@masscratch.top">enquiry@masscratch.top</a></div>
-            <div class="footer-copy" id="txtFooterCopy">© 2026 Masscratch · Yuen Long Merchants Association Secondary School</div>
+            <div class="footer-copy">© 2026 Masscratch · Yuen Long Merchants Association Secondary School</div>
             <div class="footer-credit">
                 Designed &amp; built by <a href="https://pigcc.wtf" target="_blank" rel="noopener noreferrer">Callan Yip</a>
                 · <a href="https://instagram.com/pigcc_1030" target="_blank" rel="noopener noreferrer">@pigcc_1030</a>
@@ -1045,352 +387,5 @@
         </div>
     </footer>
 
-    <!-- Cookie Consent Banner -->
-    <div class="cookie-banner" id="cookieBanner">
-        <div class="cookie-text" id="txtCookiePrompt">
-            本網站使用 Cookie 以提升你的個人化瀏覽體驗。
-            <span>我們會記住你選擇的語言、外觀主題與字體大小。</span>
-        </div>
-        <div class="cookie-actions">
-            <button class="cookie-btn cookie-btn-decline" id="btnCookieDecline">拒絕</button>
-            <button class="cookie-btn cookie-btn-accept" id="btnCookieAccept">同意並記住</button>
-        </div>
-    </div>
-
-    <script>
-        // --- i18n Data ---
-        const i18n = {
-            'zh': {
-                school: "元朗商會中學",
-                slogan: "2026-2027 學生會候選內閣 — 凝聚星光，與商相伴，破浪齊昇。",
-                teamTitle: "內閣幹事陣容",
-                theme: "外觀設計", lang: "語言切換", textSize: "字體大小",
-                dark: "深色", light: "淺色",
-                heroIgText: "Masscratch 官方 IG",
-                welfareBtn: "學生福利",
-                eventBtn: "預計活動",
-                cookiePrompt: "本網站使用 Cookie 以提升你的個人化瀏覽體驗。<span>我們會記住你選擇的語言、外觀主題與字體大小。</span>",
-                cookieAccept: "同意並記住", cookieDecline: "拒絕",
-                roles: {
-                    president: "主席", vice_president: "副主席", general_affairs: "總務", 
-                    designer: "美術", publication: "宣傳", academics: "學術",
-                    treasurer: "財務", welfare: "福利", secretary: "文書"
-                },
-                names: {
-                    'Xu Chak Long': '許澤朗', 
-                    'Ng Hoi Laam': '吳凱嵐', 
-                    'Ku Ho Yin': '古皓然',
-                    'Yip Tsz Leong': '葉子亮', 
-                    'Chan Yu Hin': '陳宇軒', 
-                    'Lam Queenie': '林紫羽',
-                    'Yik Ho Sing': '易昊昇', 
-                    'Chan Wai Ki': '陳煒棋', 
-                    'Lam Wai Ho': '林偉灝',
-                    'Chan Yu Ting': '陳宇霆', 
-                    'Tsang Yiu Mak': '曾耀墨', 
-                    'Chu Ho Him': '朱灝謙',
-                    'Yau Chi Kiu': '邱梓橋', 
-                    'Cheng Yu Hon Mac': '鄭裕瀚'
-                },
-                bios: {
-                    'Xu Chak Long': '早晨啊咁多位！我係主席許澤朗Ken 嚟緊一年會聽晒大家意見，全力搞好校園！希望大家支持我哋Masscratch 啦🤪',
-                    'Ng Hoi Laam': 'Halo 大家好✨我係Karrie係masscratch嘅副主席🍡雖然可能唔係做得最好嗰個👻但係我一定會俾心機做好每一個活動👾所以希望大家多多支持1號候選內閣masscratch🐒',
-                    'Ku Ho Yin': 'Hihi 我係古皓然～ 🔥 嚟緊一年充滿幹勁，會全力輔助團隊辦好活動、幫大家爭取權益！記得投我哋一票呀🙌🎈',
-                    'Yip Tsz Leong': '大家好，早晨嗱喂，我係總務葉子亮～ 我會盡力做好，請支持 1 號 Masscratch🌝',
-                    'Chan Yu Hin': 'Halo！我係總務陳宇軒～ 我會搞掂所有細節，確保活動順利平穩！記得支持我哋啦💫',
-                    'Lam Queenie': 'Hello 大家好！我係 Queenie 我會發揮無限創意，設計超有風格嘅宣傳品同周邊！希望大家鍾意✨',
-                    'Yik Ho Sing': 'Hi~ 我係Hanson 我會用設計專長打造美感同實用兼備嘅文宣，靚靚咁展現最新資訊！請多支持⭐',
-                    'Chan Wai Ki': '大家好！我係宣傳陳偉棋 我會第一時間發佈最新資訊同福利，做大家同校方嘅溝通橋樑！記得 Follow 我哋啊～ 💌',
-                    'Lam Wai Ho': 'Hey 大家好！我係宣傳林偉豪 我會收集大家嘅意見，隨時優化我哋嘅服務～ 有咩想法隨時搵我哋傾呀 😆',
-                    'Chan Yu Ting': 'Hi~ 我係學術幹事 Leo 平時睇我好隨和 但我對學術活動超多諗頭！會辦更多多元活動，請多支持',
-                    'Tsang Yiu Mak': '大家好，我係財務幹事 Matt 我會嚴謹把關每一筆收支，確保財務透明，讓活動無後顧之憂！請支持 1 號 🤗',
-                    'Chu Ho Him': '大家好！我係福利幹事朱灝謙 我會向各大商家爭取最貼心嘅折扣，照顧大家日常所需！請支持 Masscratch🎉',
-                    'Yau Chi Kiu': 'Hi！我係福利幹事邱梓橋 大家需要啲乜我就去爭取！會用最熱情嘅態度跟進福利，記得支持 1 號呀 1️⃣',
-                    'Cheng Yu Hon Mac': '大家好，我係文書 Mac 我會細心整理資料，確保閣內外資訊透明高效！請多多指教 😛'
-                }
-            },
-            'en-us': {
-                school: "YUEN LONG MERCHANTS ASSOCIATION SECONDARY SCHOOL",
-                slogan: "2026-2027 Student Council Candidate Cabinet<br>Uniting stars, growing together with our campus.",
-                teamTitle: "Cabinet Members",
-                theme: "Appearance", lang: "Language", textSize: "Text Size",
-                dark: "Dark", light: "Light",
-                heroIgText: "Masscratch Official IG",
-                welfareBtn: "Student Welfare",
-                eventBtn: "Planned Events",
-                cookiePrompt: "This website uses cookies to enhance your personalized browsing experience. <span>We remember your preference for theme, language, and font size.</span>",
-                cookieAccept: "Accept & Remember", cookieDecline: "Decline",
-                roles: {
-                    president: "President", vice_president: "Vice-President", general_affairs: "General Affairs", 
-                    designer: "Designer", publication: "Publication Officer", academics: "Academics Affair",
-                    treasurer: "Treasurer", welfare: "Welfare Officer", secretary: "Secretary"
-                },
-                names: {
-                    'Xu Chak Long': 'Ken Xu', 
-                    'Ng Hoi Laam': 'Karrie Ng', 
-                    'Ku Ho Yin': 'Vincent Ku',
-                    'Yip Tsz Leong': 'Callan Yip', 
-                    'Chan Yu Hin': 'Andy Chen', 
-                    'Lam Queenie': 'Queenie Lam',
-                    'Yik Ho Sing': 'Hanson Yik', 
-                    'Chan Wai Ki': 'Chess Chan', 
-                    'Lam Wai Ho': 'Elvis Lam',
-                    'Chan Yu Ting': 'Leo Chan', 
-                    'Tsang Yiu Mak': 'Matt Tsang', 
-                    'Chu Ho Him': 'Felix Chu',
-                    'Yau Chi Kiu': 'Cyprus Yau', 
-                    'Cheng Yu Hon Mac': 'Mac Cheng'
-                },
-                bios: {
-                    'Xu Chak Long': '早晨啊咁多位！我係主席許澤朗Ken 嚟緊一年會聽晒大家意見，全力搞好校園！希望大家支持我哋Masscratch 啦🤪',
-                    'Ng Hoi Laam': 'Halo 大家好✨我係Karrie係masscratch嘅副主席🍡雖然可能唔係做得最好嗰個👻但係我一定會俾心機做好每一個活動👾所以希望大家多多支持1號候選內閣masscratch🐒',
-                    'Ku Ho Yin': 'Hihi 我係古皓然～ 🔥 嚟緊一年充滿幹勁，會全力輔助團隊辦好活動、幫大家爭取權益！記得投我哋一票呀🙌🎈',
-                    'Yip Tsz Leong': '大家好，早晨嗱喂，我係總務葉子亮～ 我會盡力做好，請支持 1 號 Masscratch🌝',
-                    'Chan Yu Hin': 'Halo！我係總務陳宇軒～ 我會搞掂所有細節，確保活動順利平穩！記得支持我哋啦💫',
-                    'Lam Queenie': 'Hello 大家好！我係 Queenie 我會發揮無限創意，設計超有風格嘅宣傳品同周邊！希望大家鍾意✨',
-                    'Yik Ho Sing': 'Hi~ 我係Hanson 我會用設計專長打造美感同實用兼備嘅文宣，靚靚咁展現最新資訊！請多支持⭐',
-                    'Chan Wai Ki': '大家好！我係宣傳陳偉棋 我會第一時間發佈最新資訊同福利，做大家同校方嘅溝通橋樑！記得 Follow 我哋啊～ 💌',
-                    'Lam Wai Ho': 'Hey 大家好！我係宣傳林偉豪 我會收集大家嘅意見，隨時優化我哋嘅服務～ 有咩想法隨時搵我哋傾呀 😆',
-                    'Chan Yu Ting': 'Hi~ 我係學術幹事 Leo 平時睇我好隨和 但我對學術活動超多諗頭！會辦更多多元活動，請多支持',
-                    'Tsang Yiu Mak': '大家好，我係財務幹事 Matt 我會嚴謹把關每一筆收支，確保財務透明，讓活動無後顧之憂！請支持 1 號 🤗',
-                    'Chu Ho Him': '大家好！我係福利幹事朱灝謙 我會向各大商家爭取最貼心嘅折扣，照顧大家日常所需！請支持 Masscratch🎉',
-                    'Yau Chi Kiu': 'Hi！我係福利幹事邱梓橋 大家需要啲乜我就去爭取！會用最熱情嘅態度跟進福利，記得支持 1 號呀 1️⃣',
-                    'Cheng Yu Hon Mac': '大家好，我係文書 Mac 我會細心整理資料，確保閣內外資訊透明高效！請多多指教 😛'
-                }
-            }
-        };
-
-        const members = [
-            { role: 'president', key: 'Xu Chak Long', emoji: '🌟', ig: 'kenken1226_' },
-            { role: 'vice_president', key: 'Ng Hoi Laam', emoji: '⚡', ig: 'ng_sakura724' },
-            { role: 'vice_president', key: 'Ku Ho Yin', emoji: '☄️', ig: 'khy_vincent0822' },
-            { role: 'general_affairs', key: 'Chan Yu Hin', emoji: '⚙️', ig: 'cyh' },
-            { role: 'general_affairs', key: 'Yip Tsz Leong', emoji: '🛠️', ig: 'pigcc_1030' },
-            { role: 'designer', key: 'Lam Queenie', emoji: '🎨', ig: 'lq' },
-            { role: 'designer', key: 'Yik Ho Sing', emoji: '🖌️', ig: 'yhs' },
-            { role: 'publication', key: 'Chan Wai Ki', emoji: '📢', ig: 'cwk' },
-            { role: 'publication', key: 'Lam Wai Ho', emoji: '🤝', ig: 'lwh' },
-            { role: 'academics', key: 'Chan Yu Ting', emoji: '📚', ig: 'leochan_11163' },
-            { role: 'treasurer', key: 'Tsang Yiu Mak', emoji: '💰', ig: 'tym' },
-            { role: 'welfare', key: 'Chu Ho Him', emoji: '🎁', ig: 'chh' },
-            { role: 'welfare', key: 'Yau Chi Kiu', emoji: '🍀', ig: 'yck' },
-            { role: 'secretary', key: 'Cheng Yu Hon Mac', emoji: '✍️', ig: '_burggg__' }
-        ];
-
-        // --- Core Cookie Utilities ---
-        function setCookie(name, value, days = 365) {
-            const expires = new Date(Date.now() + days * 864e5).toUTCString();
-            document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/; SameSite=Strict`;
-        }
-
-        function getCookie(name) {
-            return document.cookie.split('; ').reduce((r, v) => {
-                const parts = v.split('=');
-                return parts[0] === name ? decodeURIComponent(parts[1]) : r;
-            }, '');
-        }
-
-        // --- Initial State Machine ---
-        let currentLang = 'zh';
-        let isCookieAllowed = getCookie('cookieConsent') === 'allowed';
-
-        let savedTheme = isCookieAllowed ? (getCookie('prefTheme') || 'light') : 'light';
-        let savedSize = isCookieAllowed ? (getCookie('prefSize') || 'md') : 'md';
-        let savedLang = isCookieAllowed ? (getCookie('prefLang') || 'zh') : 'zh';
-
-        currentLang = savedLang;
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        document.documentElement.setAttribute('data-size', savedSize);
-
-        // --- UI Rendering ---
-        function renderGrid() {
-            const grid = document.getElementById('teamGrid');
-            grid.innerHTML = '';
-            members.forEach((m) => {
-                const card = document.createElement('div');
-                card.className = 'card-static';
-                card.innerHTML = `
-                    <div class="role-badge">${i18n[currentLang].roles[m.role]}</div>
-                    <div class="member-name">${i18n[currentLang].names[m.key]}</div>
-                    <div class="card-arrow">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"></path></svg>
-                    </div>
-                `;
-                card.addEventListener('click', () => triggerFlipPortal(card, m));
-                grid.appendChild(card);
-            });
-        }
-
-        // --- Portal Core Animation ---
-        let activeOriginCard = null;
-        function triggerFlipPortal(originCard, memberData) {
-            activeOriginCard = originCard;
-            const rect = originCard.getBoundingClientRect();
-            const portal = document.getElementById('flipPortal');
-            const portalCard = document.getElementById('portalCard');
-            const portalFront = document.getElementById('portalFrontContent');
-            
-            portalFront.innerHTML = originCard.innerHTML;
-            document.getElementById('backAvatar').innerText = memberData.emoji;
-            document.getElementById('backName').innerText = i18n[currentLang].names[memberData.key];
-            document.getElementById('backRole').innerText = i18n[currentLang].roles[memberData.role];
-            document.getElementById('backBio').innerText = i18n[currentLang].bios[memberData.key] || i18n[currentLang].bio;
-
-            const targetHandle = memberData.ig || 'masscratch';
-            document.getElementById('backIgLink').href = `https://instagram.com/${targetHandle}`;
-
-            const ease = '0.45s cubic-bezier(0.16, 1, 0.3, 1)';
-            portalCard.style.transition = 'none';
-            portalCard.style.transform = 'rotateY(0deg) translateZ(0)';
-            portalCard.style.top = `${rect.top}px`;
-            portalCard.style.left = `${rect.left}px`;
-            portalCard.style.width = `${rect.width}px`;
-            portalCard.style.height = `${rect.height}px`;
-            portalCard.style.willChange = 'transform, top, left, width, height';
-            
-            portal.style.display = 'block';
-            portal.classList.remove('is-blurred', 'is-flipped');
-            originCard.style.opacity = '0';
-            // Force reflow so the next style changes animate
-            void portal.offsetHeight;
-
-            portal.classList.add('is-active');
-            document.body.classList.add('modal-open');
-            
-            // Use compositor-friendly transition list (avoid "all")
-            portalCard.style.transition = `transform ${ease}, top ${ease}, left ${ease}, width ${ease}, height ${ease}`;
-            // Apply blur without transitioning it (cheaper)
-            requestAnimationFrame(() => portal.classList.add('is-blurred'));
-
-            const isMobile = window.innerWidth < 768;
-            const targetWidth = isMobile ? window.innerWidth * 0.92 : Math.min(window.innerWidth * 0.88, 480);
-            const targetHeight = isMobile ? window.innerHeight * 0.85 : Math.min(window.innerHeight * 0.75, 580);
-            
-            portalCard.style.top = `${(window.innerHeight - targetHeight) / 2}px`;
-            portalCard.style.left = `${(window.innerWidth - targetWidth) / 2}px`;
-            portalCard.style.width = `${targetWidth}px`;
-            portalCard.style.height = `${targetHeight}px`;
-            portalCard.style.transform = 'rotateY(180deg) translateZ(0)';
-            
-            setTimeout(() => portal.classList.add('is-flipped'), 70);
-        }
-
-        function closePortal() {
-            const portal = document.getElementById('flipPortal');
-            const portalCard = document.getElementById('portalCard');
-            if (!activeOriginCard) return;
-            const rect = activeOriginCard.getBoundingClientRect();
-
-            portal.classList.remove('is-flipped', 'is-blurred');
-            portalCard.style.willChange = 'transform, top, left, width, height';
-            portalCard.style.top = `${rect.top}px`;
-            portalCard.style.left = `${rect.left}px`;
-            portalCard.style.width = `${rect.width}px`;
-            portalCard.style.height = `${rect.height}px`;
-            portalCard.style.transform = 'rotateY(0deg) translateZ(0)';
-
-            setTimeout(() => {
-                portal.classList.remove('is-active');
-                portal.style.display = 'none';
-                portalCard.style.willChange = 'auto';
-                activeOriginCard.style.opacity = '1';
-                activeOriginCard = null;
-                document.body.classList.remove('modal-open');
-            }, 450);
-        }
-
-        document.getElementById('closePortal').addEventListener('click', e => { e.stopPropagation(); closePortal(); });
-        document.getElementById('flipPortal').addEventListener('click', e => { if (e.target === document.getElementById('flipPortal')) closePortal(); });
-
-        // --- Drawer Control ---
-        const toggleSettings = document.getElementById('toggleSettings');
-        const settingsPanel = document.getElementById('settingsPanel');
-        toggleSettings.addEventListener('click', e => { e.stopPropagation(); settingsPanel.classList.toggle('is-open'); });
-        
-        document.addEventListener('click', e => { 
-            if (!settingsPanel.contains(e.target) && !toggleSettings.contains(e.target)) {
-                settingsPanel.classList.remove('is-open'); 
-            }
-        });
-
-        // --- Settings Options Trigger ---
-        document.querySelectorAll('.setting-btn-opt').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const optType = this.dataset.opt;
-                const val = this.dataset.value;
-
-                this.parentElement.querySelectorAll('.setting-btn-opt').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-
-                if (optType === 'theme') {
-                    document.documentElement.setAttribute('data-theme', val);
-                    if (isCookieAllowed) setCookie('prefTheme', val);
-                } else if (optType === 'size') {
-                    document.documentElement.setAttribute('data-size', val);
-                    if (isCookieAllowed) setCookie('prefSize', val);
-                } else if (optType === 'lang') {
-                    currentLang = val;
-                    if (isCookieAllowed) setCookie('prefLang', val);
-                    updateLanguage();
-                }
-            });
-        });
-
-        function syncActiveButtons() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const currentSize = document.documentElement.getAttribute('data-size');
-            
-            document.querySelectorAll('[data-opt="theme"]').forEach(b => b.classList.toggle('active', b.dataset.value === currentTheme));
-            document.querySelectorAll('[data-opt="size"]').forEach(b => b.classList.toggle('active', b.dataset.value === currentSize));
-            document.querySelectorAll('[data-opt="lang"]').forEach(b => b.classList.toggle('active', b.dataset.value === currentLang));
-        }
-
-        function updateLanguage() {
-            const data = i18n[currentLang];
-            document.getElementById('txtSchool').innerText = data.school;
-            document.getElementById('txtSlogan').innerHTML = data.slogan; 
-            document.getElementById('txtTeamTitle').innerText = data.teamTitle;
-            document.getElementById('lblTheme').innerText = data.theme;
-            document.getElementById('lblLang').innerText = data.lang;
-            document.getElementById('lblTextSize').innerText = data.textSize;
-            document.getElementById('btnDark').innerText = data.dark;
-            document.getElementById('btnLight').innerText = data.light;
-            document.getElementById('btnHeroIg').querySelector('span').innerText = data.heroIgText;
-            document.getElementById('txtWelfareBtn').innerText = data.welfareBtn;
-            document.getElementById('txtEventBtn').innerText = data.eventBtn;
-            document.getElementById('txtCookiePrompt').innerHTML = data.cookiePrompt;
-            document.getElementById('btnCookieAccept').innerText = data.cookieAccept;
-            document.getElementById('btnCookieDecline').innerText = data.cookieDecline;
-            renderGrid();
-            syncActiveButtons();
-        }
-
-        // --- Cookie Banner Operational Logic ---
-        const cookieBanner = document.getElementById('cookieBanner');
-        
-        window.addEventListener('load', () => {
-            if (getCookie('cookieConsent') === '') {
-                setTimeout(() => cookieBanner.classList.add('is-visible'), 1000);
-            }
-        });
-
-        document.getElementById('btnCookieAccept').addEventListener('click', () => {
-            isCookieAllowed = true;
-            setCookie('cookieConsent', 'allowed');
-            setCookie('prefTheme', document.documentElement.getAttribute('data-theme'));
-            setCookie('prefSize', document.documentElement.getAttribute('data-size'));
-            setCookie('prefLang', currentLang);
-            cookieBanner.classList.remove('is-visible');
-        });
-
-        document.getElementById('btnCookieDecline').addEventListener('click', () => {
-            isCookieAllowed = false;
-            setCookie('cookieConsent', 'declined', 14);
-            cookieBanner.classList.remove('is-visible');
-        });
-
-        // Initialize WebApp
-        updateLanguage();
-    </script>
 </body>
 </html>
