@@ -1,0 +1,138 @@
+{
+  "org": [
+    {
+      "name": {
+        "zh": "HKSSA",
+        "en": "HKSSA"
+      },
+      "handle": "@hkssa",
+      "benefit": {
+        "zh": "本閣當選後自動成為會員",
+        "en": "Automatic membership upon our cabinet being elected"
+      }
+    }
+  ],
+  "merchants": [
+    {
+      "name": {
+        "zh": "komorebi",
+        "en": "komorebi"
+      },
+      "handle": "@komorebi.storeee",
+      "benefit": {
+        "zh": "出示學生證 + Follow IG → 八折",
+        "en": "Student Card + Follow IG → 20% off"
+      }
+    },
+    {
+      "name": {
+        "zh": "FLOWERS S",
+        "en": "FLOWERS S"
+      },
+      "handle": "@your.favflowers",
+      "benefit": {
+        "zh": "出示學生證 → 九折",
+        "en": "Student Card → 10% off"
+      }
+    },
+    {
+      "name": {
+        "zh": "Holiday World",
+        "en": "Holiday World"
+      },
+      "handle": null,
+      "benefit": {
+        "zh": "特別優惠價",
+        "en": "Special Price"
+      }
+    },
+    {
+      "name": {
+        "zh": "輝旭文具",
+        "en": "輝旭文具"
+      },
+      "handle": null,
+      "benefit": {
+        "zh": "消費滿 $10 享九五折",
+        "en": "$10+ → 5% off"
+      }
+    },
+    {
+      "name": {
+        "zh": "元朗書店",
+        "en": "元朗書店"
+      },
+      "handle": null,
+      "benefit": {
+        "zh": "消費滿 $30 享九折",
+        "en": "$30+ → 10% off"
+      }
+    },
+    {
+      "name": {
+        "zh": "尋味",
+        "en": "尋味"
+      },
+      "handle": null,
+      "benefit": {
+        "zh": "四人或以上同行減 $5",
+        "en": "$5 off for groups of 4+"
+      }
+    },
+    {
+      "name": {
+        "zh": "凯豐海南雞",
+        "en": "凯豐海南雞"
+      },
+      "handle": null,
+      "benefit": {
+        "zh": "滿 $50 餐送雞翼",
+        "en": "$50 meal → free chicken wings"
+      }
+    },
+    {
+      "name": {
+        "zh": "糖森林",
+        "en": "糖森林"
+      },
+      "handle": null,
+      "benefit": {
+        "zh": "滿 $100 送腸粉",
+        "en": "$100+ → free rice noodle roll"
+      }
+    },
+    {
+      "name": {
+        "zh": "九八",
+        "en": "九八"
+      },
+      "handle": "@partyroom.98",
+      "benefit": {
+        "zh": "九五折",
+        "en": "5% off"
+      }
+    },
+    {
+      "name": {
+        "zh": "白田閱讀中心",
+        "en": "白田閱讀中心"
+      },
+      "handle": null,
+      "benefit": {
+        "zh": "",
+        "en": ""
+      }
+    },
+    {
+      "name": {
+        "zh": "香港古著",
+        "en": "香港古著"
+      },
+      "handle": null,
+      "benefit": {
+        "zh": "消費滿 $688 可入會，其後九折",
+        "en": "$688+ Membership, then 10% off"
+      }
+    }
+  ]
+}
