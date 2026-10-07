@@ -136,13 +136,13 @@
     },
     {
       "name": {
-        "zh": "",
-        "en": ""
+        "zh": "測試",
+        "en": "test"
       },
-      "handle": null,
+      "handle": "@test",
       "benefit": {
-        "zh": "",
-        "en": ""
+        "zh": "測試",
+        "en": "test"
       }
     }
   ]
