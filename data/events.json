@@ -108,5 +108,49 @@
       "zh": "計劃喺中六最後一日下午設立拍攝區，免費為全校同學拍照並提供飾物，事後可選擇電子檔或相紙。希望幫助畢業生定格珍貴校園時光。",
       "en": "We plan to set up a photo zone on Form 6’s last afternoon, offering free photos with props. Students can choose digital files or prints. We hope to help graduates capture precious school memories."
     }
+  },
+  {
+    "name": {
+      "zh": "電競比賽",
+      "en": "E-sport Competition"
+    },
+    "tag": {
+      "zh": "電競",
+      "en": "E-sport"
+    },
+    "date": {
+      "zh": "七月上旬",
+      "en": "Early-July"
+    },
+    "place": {
+      "zh": "未定",
+      "en": "TBC"
+    },
+    "desc": {
+      "zh": "我們希望喺1月舉行線上電競比賽，比賽遊戲會先喺IG詢問同學意見。目標係提供一個展現技術同團隊合作嘅平台。",
+      "en": "We hope to organise an online E-sport competition in January. The game will be decided by student votes on our Instagram. Our goal is to create a platform for students to showcase skills and teamwork."
+    }
+  },
+  {
+    "name": {
+      "zh": "才藝表演",
+      "en": "Talent Show"
+    },
+    "tag": {
+      "zh": "表演",
+      "en": "Show"
+    },
+    "date": {
+      "zh": "七月上旬",
+      "en": "Early-July"
+    },
+    "place": {
+      "zh": "禮堂",
+      "en": "Hall"
+    },
+    "desc": {
+      "zh": "期望7月可舉行才藝表演，接受個人及團體報名。設初賽同決賽，前三可獲獲得豐厚獎品。希望為有才華嘅同學提供展示舞台。",
+      "en": "Tentatively planned for July — a Talent Show open to both individuals and groups. With semi-finals and finals, Top-3 could receive prizes. We hope to give talented students a stage to shine."
+    }
   }
 ]
