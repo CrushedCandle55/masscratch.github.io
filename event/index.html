@@ -127,38 +127,19 @@
             font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
             letter-spacing: 0.8px; color: var(--accent); margin: 1.75rem 0 0.75rem 0.25rem;
         }
-        .event-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 0.9rem; perspective: 1200px; }
-        .event-flip {
-            min-height: 168px;
-            cursor: pointer;
-            -webkit-tap-highlight-color: transparent;
-        }
-        .event-flip-inner {
-            position: relative;
-            width: 100%;
-            min-height: 168px;
-            height: 100%;
-            transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-            transform-style: preserve-3d;
-            -webkit-transform-style: preserve-3d;
-        }
-        .event-flip.is-flipped .event-flip-inner { transform: rotateY(180deg); }
-        .event-face {
-            position: absolute;
-            inset: 0;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
+        .event-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 0.9rem; }
+        .event-card {
             background: var(--card-bg);
             backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
             border: 1px solid var(--border); border-radius: 18px;
             box-shadow: var(--glass-shadow), var(--glass-shine);
             padding: 1.25rem 1.3rem 2.4rem;
-            display: flex; flex-direction: column;
+            position: relative;
+            cursor: pointer;
+            min-height: 140px;
+            transition: border-color 0.25s, box-shadow 0.25s;
         }
-        .event-face-back {
-            transform: rotateY(180deg);
-            padding-bottom: 1.25rem;
-        }
+        .event-card:active { transform: scale(0.98); }
         .event-top {
             display: flex; align-items: flex-start; justify-content: space-between;
             gap: 0.75rem; margin-bottom: 0.55rem;
@@ -176,29 +157,17 @@
         }
         .event-meta {
             display: flex; flex-wrap: wrap; gap: 0.5rem 1rem;
-            font-size: 0.85rem; color: var(--text-sub); margin-bottom: 0.45rem;
+            font-size: 0.85rem; color: var(--text-sub);
         }
         .event-meta span { display: inline-flex; align-items: center; gap: 0.3rem; }
-        .event-desc {
-            font-size: 0.9rem; color: var(--text-sub); line-height: 1.5;
-            flex: 1; overflow: auto;
-        }
         .event-more {
             position: absolute;
             right: 1.15rem; bottom: 0.95rem;
             font-size: 0.78rem; font-weight: 600; color: var(--accent);
             display: inline-flex; align-items: center; gap: 0.25rem;
-            opacity: 0.9;
         }
         .event-more::after { content: "→"; transition: transform 0.2s; }
-        .event-flip:hover .event-more::after { transform: translateX(3px); }
-        .event-back-close {
-            align-self: flex-start;
-            margin-bottom: 0.65rem;
-            font-size: 0.75rem; font-weight: 600; color: var(--accent);
-            background: none; border: none; cursor: pointer; padding: 0;
-            font-family: inherit;
-        }
+        .event-card:hover .event-more::after { transform: translateX(3px); }
         .event-card-empty {
             background: var(--card-bg);
             backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
@@ -207,6 +176,87 @@
             padding: 2rem 1.25rem; text-align: center;
             font-size: 0.9rem; color: var(--text-sub);
         }
+
+        /* Portal popup (same pattern as homepage) */
+        .flip-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1000; pointer-events: none; display: none;
+            perspective: 1200px; background-color: transparent;
+            transition: background-color 0.35s ease; contain: strict;
+        }
+        .flip-overlay.is-active { display: block; pointer-events: auto; }
+        .flip-overlay.is-blurred {
+            background-color: rgba(0,0,0,0.35);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+        }
+        [data-theme="light"] .flip-overlay.is-blurred {
+            background-color: rgba(255,255,255,0.35);
+        }
+        .portal-card {
+            position: absolute; transform-style: preserve-3d;
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                        top 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                        left 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                        width 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                        height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, top, left, width, height;
+            backface-visibility: hidden; -webkit-backface-visibility: hidden;
+        }
+        .portal-face {
+            position: absolute; width: 100%; height: 100%;
+            backface-visibility: hidden; -webkit-backface-visibility: hidden;
+            border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+            transform: translateZ(0);
+        }
+        .portal-front {
+            background: var(--card-bg); border: 1px solid var(--border);
+            padding: 1.5rem; display: flex; flex-direction: column; justify-content: center;
+        }
+        .portal-back {
+            background: var(--card-bg-solid, var(--card-bg));
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            transform: rotateY(180deg);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 1.5rem; overflow-y: auto; -webkit-overflow-scrolling: touch;
+        }
+        .back-container {
+            max-width: 360px; width: 100%;
+            display: flex; flex-direction: column; align-items: center;
+            opacity: 0; transform: scale(0.94) translate3d(0, 10px, 0);
+            transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.12s,
+                        transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.12s;
+            padding: 1rem 0; margin: auto 0;
+        }
+        .flip-overlay.is-flipped .back-container {
+            opacity: 1; transform: scale(1) translate3d(0, 0, 0);
+        }
+        .back-name {
+            font-size: 1.5rem; font-weight: 800; margin-bottom: 0.35rem;
+            text-align: center; letter-spacing: -0.3px;
+        }
+        .back-tag {
+            font-size: 0.75rem; font-weight: 600; color: var(--accent);
+            background: var(--tag-bg); padding: 0.25rem 0.6rem; border-radius: 8px;
+            margin-bottom: 1rem; text-transform: uppercase;
+        }
+        .back-meta {
+            font-size: 0.9rem; color: var(--text-sub); margin-bottom: 0.75rem;
+            text-align: center; line-height: 1.5;
+        }
+        .back-bio {
+            font-size: 0.95rem; color: var(--text-sub); line-height: 1.55;
+            text-align: center; padding: 0 0.5rem;
+        }
+        .portal-close {
+            position: absolute; top: 1rem; right: 1rem;
+            background: rgba(128,128,128,0.15); border: none; color: var(--text-main);
+            width: 36px; height: 36px; border-radius: 50%; font-size: 1.1rem;
+            cursor: pointer; z-index: 2; display: flex; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.25s;
+        }
+        .flip-overlay.is-flipped .portal-close { opacity: 1; }
+
         .footer-note { text-align: center; font-size: 0.8rem; color: var(--text-sub); margin-top: 2rem; padding: 0 1rem; line-height: 1.5; }
 
         .site-footer {
@@ -261,16 +311,14 @@
             header { padding-left: 2rem; padding-right: 2rem; }
             .settings-panel { width: 320px; padding: 6rem 2rem 2rem; }
             .page-hero { padding-top: calc(48px + 3.5rem); }
-            .event-flip:hover .event-face { border-color: var(--accent); }
+            .event-card:hover { border-color: var(--accent); }
             .container { padding: 1rem 1.5rem 5rem; }
         }
         @media (max-width: 480px) {
             header { padding-left: 1rem; padding-right: 1rem; }
             .logo { font-size: 0.9rem; } .logo-img { width: 32px; height: 32px; }
             .page-hero { padding: calc(48px + env(safe-area-inset-top) + 1.75rem) 1rem 1.25rem; }
-            .event-face { padding: 1.1rem 1.15rem 2.3rem; border-radius: 14px; }
-            .event-flip { min-height: 156px; }
-            .event-flip-inner { min-height: 156px; }
+            .event-card { padding: 1.1rem 1.15rem 2.3rem; border-radius: 14px; min-height: 130px; }
             .event-name { font-size: 1.05rem; }
         }
     </style>
@@ -326,6 +374,21 @@
         <p class="footer-note" id="txtFooter">活動詳情會隨籌備進度更新 · 歡迎向內閣提出意見</p>
     </div>
 
+    <div class="flip-overlay" id="flipPortal">
+        <div class="portal-card" id="portalCard">
+            <div class="portal-face portal-front" id="portalFrontContent"></div>
+            <div class="portal-face portal-back">
+                <button class="portal-close" id="closePortal" aria-label="Close">✕</button>
+                <div class="back-container">
+                    <h3 class="back-name" id="backName"></h3>
+                    <div class="back-tag" id="backTag"></div>
+                    <div class="back-meta" id="backMeta"></div>
+                    <p class="back-bio" id="backBio"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         const i18n = {
             zh: {
@@ -369,6 +432,8 @@
             return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
         }
 
+        var activeOriginCard = null;
+
         function renderEvents(containerId, items) {
             var el = document.getElementById(containerId);
             el.innerHTML = "";
@@ -382,58 +447,110 @@
                 return;
             }
             items.forEach(function(item) {
-                var name = esc((item.name && (item.name[k] || item.name.zh)) || "");
-                var tag = esc((item.tag && (item.tag[k] || item.tag.zh)) || "");
-                var date = esc((item.date && (item.date[k] || item.date.zh)) || "");
-                var place = esc((item.place && (item.place[k] || item.place.zh)) || "");
-                var desc = esc((item.desc && (item.desc[k] || item.desc.zh)) || "");
+                var name = (item.name && (item.name[k] || item.name.zh)) || "";
+                var tag = (item.tag && (item.tag[k] || item.tag.zh)) || "";
+                var date = (item.date && (item.date[k] || item.date.zh)) || "";
+                var place = (item.place && (item.place[k] || item.place.zh)) || "";
+                var desc = (item.desc && (item.desc[k] || item.desc.zh)) || "";
 
-                var wrap = document.createElement("div");
-                wrap.className = "event-flip";
-                wrap.setAttribute("role", "button");
-                wrap.setAttribute("tabindex", "0");
-                wrap.innerHTML =
-                    '<div class="event-flip-inner">' +
-                        '<div class="event-face event-face-front">' +
-                            '<div class="event-top">' +
-                                '<div class="event-name">' + name + '</div>' +
-                                (tag ? '<span class="event-tag">' + tag + '</span>' : '') +
-                            '</div>' +
-                            (date ? '<div class="event-meta"><span>📅 ' + date + '</span></div>' : '') +
-                            '<span class="event-more">' + esc(d.more) + '</span>' +
-                        '</div>' +
-                        '<div class="event-face event-face-back">' +
-                            '<button type="button" class="event-back-close">' + esc(d.backCard) + '</button>' +
-                            '<div class="event-top">' +
-                                '<div class="event-name">' + name + '</div>' +
-                                (tag ? '<span class="event-tag">' + tag + '</span>' : '') +
-                            '</div>' +
-                            '<div class="event-meta">' +
-                                (date ? '<span>📅 ' + date + '</span>' : '') +
-                                (place ? '<span>📍 ' + place + '</span>' : '') +
-                            '</div>' +
-                            '<div class="event-desc">' + desc + '</div>' +
-                        '</div>' +
-                    '</div>';
+                var card = document.createElement("div");
+                card.className = "event-card";
+                card.innerHTML =
+                    '<div class="event-top">' +
+                        '<div class="event-name">' + esc(name) + '</div>' +
+                        (tag ? '<span class="event-tag">' + esc(tag) + '</span>' : '') +
+                    '</div>' +
+                    (date ? '<div class="event-meta"><span>📅 ' + esc(date) + '</span></div>' : '') +
+                    '<span class="event-more">' + esc(d.more) + '</span>';
 
-                function toggle(e) {
-                    if (e.target && e.target.classList && e.target.classList.contains("event-back-close")) {
-                        e.stopPropagation();
-                        wrap.classList.remove("is-flipped");
-                        return;
-                    }
-                    wrap.classList.toggle("is-flipped");
-                }
-                wrap.addEventListener("click", toggle);
-                wrap.addEventListener("keydown", function(e) {
-                    if (e.key === "Enter" || e.key === " ") {
-                        e.preventDefault();
-                        toggle(e);
-                    }
+                card.addEventListener("click", function() {
+                    openEventPortal(card, { name: name, tag: tag, date: date, place: place, desc: desc });
                 });
-                el.appendChild(wrap);
+                el.appendChild(card);
             });
         }
+
+        function openEventPortal(originCard, data) {
+            activeOriginCard = originCard;
+            var rect = originCard.getBoundingClientRect();
+            var portal = document.getElementById("flipPortal");
+            var portalCard = document.getElementById("portalCard");
+            var portalFront = document.getElementById("portalFrontContent");
+
+            portalFront.innerHTML = originCard.innerHTML;
+            document.getElementById("backName").textContent = data.name || "";
+            var tagEl = document.getElementById("backTag");
+            if (data.tag) {
+                tagEl.textContent = data.tag;
+                tagEl.style.display = "";
+            } else {
+                tagEl.style.display = "none";
+            }
+            var metaParts = [];
+            if (data.date) metaParts.push("📅 " + data.date);
+            if (data.place) metaParts.push("📍 " + data.place);
+            document.getElementById("backMeta").textContent = metaParts.join("  ·  ");
+            document.getElementById("backBio").textContent = data.desc || "";
+
+            var ease = "0.45s cubic-bezier(0.16, 1, 0.3, 1)";
+            portalCard.style.transition = "none";
+            portalCard.style.transform = "rotateY(0deg) translateZ(0)";
+            portalCard.style.top = rect.top + "px";
+            portalCard.style.left = rect.left + "px";
+            portalCard.style.width = rect.width + "px";
+            portalCard.style.height = rect.height + "px";
+
+            portal.style.display = "block";
+            portal.classList.remove("is-blurred", "is-flipped");
+            originCard.style.opacity = "0";
+            void portal.offsetHeight;
+
+            portal.classList.add("is-active");
+            document.body.style.overflow = "hidden";
+            portalCard.style.transition = "transform " + ease + ", top " + ease + ", left " + ease + ", width " + ease + ", height " + ease;
+            requestAnimationFrame(function() { portal.classList.add("is-blurred"); });
+
+            var isMobile = window.innerWidth < 768;
+            var targetWidth = isMobile ? window.innerWidth * 0.92 : Math.min(window.innerWidth * 0.88, 480);
+            var targetHeight = isMobile ? window.innerHeight * 0.7 : Math.min(window.innerHeight * 0.65, 520);
+
+            portalCard.style.top = ((window.innerHeight - targetHeight) / 2) + "px";
+            portalCard.style.left = ((window.innerWidth - targetWidth) / 2) + "px";
+            portalCard.style.width = targetWidth + "px";
+            portalCard.style.height = targetHeight + "px";
+            portalCard.style.transform = "rotateY(180deg) translateZ(0)";
+            setTimeout(function() { portal.classList.add("is-flipped"); }, 70);
+        }
+
+        function closeEventPortal() {
+            var portal = document.getElementById("flipPortal");
+            var portalCard = document.getElementById("portalCard");
+            if (!activeOriginCard) return;
+            var rect = activeOriginCard.getBoundingClientRect();
+            portal.classList.remove("is-flipped", "is-blurred");
+            var ease = "0.4s cubic-bezier(0.16, 1, 0.3, 1)";
+            portalCard.style.transition = "transform " + ease + ", top " + ease + ", left " + ease + ", width " + ease + ", height " + ease;
+            portalCard.style.top = rect.top + "px";
+            portalCard.style.left = rect.left + "px";
+            portalCard.style.width = rect.width + "px";
+            portalCard.style.height = rect.height + "px";
+            portalCard.style.transform = "rotateY(0deg) translateZ(0)";
+            setTimeout(function() {
+                portal.classList.remove("is-active");
+                portal.style.display = "none";
+                if (activeOriginCard) activeOriginCard.style.opacity = "1";
+                activeOriginCard = null;
+                document.body.style.overflow = "";
+            }, 420);
+        }
+
+        document.getElementById("closePortal").addEventListener("click", function(e) {
+            e.stopPropagation();
+            closeEventPortal();
+        });
+        document.getElementById("flipPortal").addEventListener("click", function(e) {
+            if (e.target === document.getElementById("flipPortal")) closeEventPortal();
+        });
 
         function updateLanguage() {
             var d = i18n[currentLang];
