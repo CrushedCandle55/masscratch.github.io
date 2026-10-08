@@ -1,1 +1,24 @@
-[]
+[
+  {
+    "name": {
+      "zh": "留堂異空間",
+      "en": "Detention void"
+    },
+    "tag": {
+      "zh": "鬼屋",
+      "en": "Haunted house"
+    },
+    "date": {
+      "zh": "十一月中旬（統測後）",
+      "en": "Mid-Nov (After Form Test)"
+    },
+    "place": {
+      "zh": "未定",
+      "en": "TBC"
+    },
+    "desc": {
+      "zh": "暫定11月中於禮堂舉行萬聖節主題密室逃脫活動。2-5人一組解謎闖關，設龍虎榜。希望透過呢個活動增加同學歸屬感同節日氣氛。",
+      "en": "Tentatively scheduled for mid-November in the Hall — a Halloween-themed escape room. Teams of 2-5 solve puzzles and compete on the leaderboard. We hope this event will boost school spirit and festive fun."
+    }
+  }
+]
