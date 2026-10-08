@@ -1,16 +1,16 @@
 [
   {
     "name": {
-      "zh": "留堂異空間",
-      "en": "Detention void"
+      "zh": "鬼屋「留堂異空間」",
+      "en": "The Haunted House \"Detention void\""
     },
     "tag": {
-      "zh": "鬼屋",
-      "en": "Haunted house"
+      "zh": "萬聖節",
+      "en": "Halloween"
     },
     "date": {
-      "zh": "十一月中旬（統測後）",
-      "en": "Mid-Nov (After Form Test)"
+      "zh": "11月中旬（統測後）",
+      "en": "Mid-November (After Form Test)"
     },
     "place": {
       "zh": "未定",
@@ -19,6 +19,94 @@
     "desc": {
       "zh": "暫定11月中於禮堂舉行萬聖節主題密室逃脫活動。2-5人一組解謎闖關，設龍虎榜。希望透過呢個活動增加同學歸屬感同節日氣氛。",
       "en": "Tentatively scheduled for mid-November in the Hall — a Halloween-themed escape room. Teams of 2-5 solve puzzles and compete on the leaderboard. We hope this event will boost school spirit and festive fun."
+    }
+  },
+  {
+    "name": {
+      "zh": "校刊《商傳》",
+      "en": "School Magazine “The Masses”"
+    },
+    "tag": {
+      "zh": "校刊",
+      "en": "School Magazine"
+    },
+    "date": {
+      "zh": "11月、1月、3月、5月的首日",
+      "en": "November 1, January 1, March 1, May 1"
+    },
+    "place": {
+      "zh": "各班班房派發",
+      "en": "Distribute in every classroom"
+    },
+    "desc": {
+      "zh": "我們計劃每兩個月出版一本《商傳》，免費派發到各班。內容包括校園資訊、活動預告同同學故事，希望拉近大家同學生會以及嘅距離。",
+      "en": "We plan to publish Masses every two months and distribute it free to every class. Featuring campus news, event updates and student stories, we hope it will help bridge the gap between students and the school and student council."
+    }
+  },
+  {
+    "name": {
+      "zh": "聖誕腦人",
+      "en": "The Branta"
+    },
+    "tag": {
+      "zh": "聖誕",
+      "en": "Chrismas"
+    },
+    "date": {
+      "zh": "12月中旬",
+      "en": "Mid-December"
+    },
+    "place": {
+      "zh": "大堂",
+      "en": "The lobby"
+    },
+    "desc": {
+      "zh": "計劃喺12月中一個午膳時間，喺大堂以聖誕腦人形象同同學互動答題，送出小禮物。輕鬆好玩，希望為校園添多一點節日驚喜。",
+      "en": "We plan a fun lunchtime activity in mid-December where our members dress as Christmas “Brantas” and give out small gifts for correct answers. Simple and cheerful — we hope to add a little festive surprise to campus life."
+    }
+  },
+  {
+    "name": {
+      "zh": "校政大會",
+      "en": "School politic convention"
+    },
+    "tag": {
+      "zh": "校務",
+      "en": "School-related"
+    },
+    "date": {
+      "zh": "2月中旬",
+      "en": "Mid-Feburary"
+    },
+    "place": {
+      "zh": "未定",
+      "en": "TBC"
+    },
+    "desc": {
+      "zh": "我們希望喺2月舉辦校政大會，邀請老師直接同同學對話，解答疑問同收集意見。目標係建立更順暢嘅溝通橋樑。",
+      "en": "We hope to hold a teacher-student dialogue session as a school politic convention in February, inviting teacher to answer questions and listen to student feedback. Our aim is to build a smoother communication channel."
+    }
+  },
+  {
+    "name": {
+      "zh": "光影留情",
+      "en": "Catch Memory"
+    },
+    "tag": {
+      "zh": "拍攝",
+      "en": "Photo-taking"
+    },
+    "date": {
+      "zh": "中六Last day",
+      "en": "Form 6 Last day"
+    },
+    "place": {
+      "zh": "未定",
+      "en": "TBC"
+    },
+    "desc": {
+      "zh": "計劃喺中六最後一日下午設立拍攝區，免費為全校同學拍照並提供飾物，事後可選擇電子檔或相紙。希望幫助畢業生定格珍貴校園時光。",
+      "en": "We plan to set up a photo zone on Form 6’s last afternoon, offering free photos with props. Students can choose digital files or prints. We hope to help graduates capture precious school memories."
     }
   }
 ]
